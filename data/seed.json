@@ -1,0 +1,5007 @@
+{
+ "meta": {
+  "title": "Cybersecurity Roadmap 2027",
+  "planStart": "2027-01-01",
+  "planEnd": "2027-12-31",
+  "source": "Cybersecurity_Roadmap_2027.pdf"
+ },
+ "phases": [
+  {
+   "num": 1,
+   "name": "Foundations",
+   "start": "2027-01-01",
+   "end": "2027-02-28",
+   "text": "Networking, Linux, Python, Windows, crypto ISC2 CC, 3 projects"
+  },
+  {
+   "num": 2,
+   "name": "Core security",
+   "start": "2027-03-01",
+   "end": "2027-04-25",
+   "text": "Security+ knowledge and exam CompTIA Security+"
+  },
+  {
+   "num": 3,
+   "name": "Pentesting",
+   "start": "2027-04-26",
+   "end": "2027-07-11",
+   "text": "Recon, web, exploitation, privilege escalation, Active Directory eJPT, 3 projects"
+  },
+  {
+   "num": 4,
+   "name": "Blue team and cloud",
+   "start": "2027-07-12",
+   "end": "2027-08-22",
+   "text": "SIEM, detection, DFIR, AWS and Azure security SC-900, 2 projects"
+  },
+  {
+   "num": 5,
+   "name": "AI security",
+   "start": "2027-08-23",
+   "end": "2027-09-12",
+   "text": "LLM attacks and defenses, OWASP LLM Top 10 CLLMSP, CLLMSE, 1 project"
+  },
+  {
+   "num": 6,
+   "name": "Advanced practical",
+   "start": "2027-09-13",
+   "end": "2027-10-31",
+   "text": "PNPT-style engagement, then bug bounty PNPT or CPTS, 2 projects"
+  },
+  {
+   "num": 7,
+   "name": "Capstone",
+   "start": "2027-11-01",
+   "end": "2027-11-21",
+   "text": "Build, attack, detect and report on a full lab Capstone project and demo"
+  },
+  {
+   "num": 8,
+   "name": "Job hunt",
+   "start": "2027-11-22",
+   "end": "2027-12-31",
+   "text": "Portfolio, interviews, applications, next cert Resume, 40+ applications"
+  }
+ ],
+ "days": [
+  {
+   "date": "2027-01-01",
+   "day": 1,
+   "dow": "Fri",
+   "week": 0,
+   "weekTitle": "Get ready: tools, accounts and a study routine",
+   "task": "Set goals and a schedule (2-3 h on weekdays). Create GitHub, LinkedIn and a notes app (Notion or Obsidian).",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-02",
+   "day": 2,
+   "dow": "Sat",
+   "week": 0,
+   "weekTitle": "Get ready: tools, accounts and a study routine",
+   "task": "Install VirtualBox or VMware. Build Kali Linux and Ubuntu VMs and take a snapshot of each.",
+   "type": "lab",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-03",
+   "day": 3,
+   "dow": "Sun",
+   "week": 0,
+   "weekTitle": "Get ready: tools, accounts and a study routine",
+   "task": "Create TryHackMe and Hack The Box accounts. Finish the first Pre Security intro rooms. Rest.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-04",
+   "day": 4,
+   "dow": "Mon",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "How the internet works. OSI and TCP/IP models.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-05",
+   "day": 5,
+   "dow": "Tue",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "IP addressing, MAC addresses, ports. TCP vs UDP.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-06",
+   "day": 6,
+   "dow": "Wed",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "Subnetting and CIDR. Solve 20 practice problems.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-07",
+   "day": 7,
+   "dow": "Thu",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "Install Wireshark. Capture and read ping, DNS and HTTP traffic.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-08",
+   "day": 8,
+   "dow": "Fri",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "TryHackMe Pre Security: network fundamentals rooms.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-09",
+   "day": 9,
+   "dow": "Sat",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "Lab: capture traffic and document 5 protocols in your notes.",
+   "type": "lab",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-10",
+   "day": 10,
+   "dow": "Sun",
+   "week": 1,
+   "weekTitle": "Networking I: how networks work",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-11",
+   "day": 11,
+   "dow": "Mon",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "DNS, DHCP and ARP in depth.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-12",
+   "day": 12,
+   "dow": "Tue",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "HTTP and HTTPS, TLS handshake, cookies and headers.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-13",
+   "day": 13,
+   "dow": "Wed",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "Firewalls, NAT, VPNs, proxies, IDS and IPS concepts.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-14",
+   "day": 14,
+   "dow": "Thu",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "Wireshark: filters, follow TCP streams, spot anomalies.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-15",
+   "day": 15,
+   "dow": "Fri",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "Cisco Packet Tracer intro (free Cisco Networking Academy course).",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-16",
+   "day": 16,
+   "dow": "Sat",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "Project 1: build a small network in Packet Tracer. Write a diagram and short report.",
+   "type": "project",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-17",
+   "day": 17,
+   "dow": "Sun",
+   "week": 2,
+   "weekTitle": "Networking II: services and defenses",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-18",
+   "day": 18,
+   "dow": "Mon",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "Linux filesystem, users, groups and permissions.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-19",
+   "day": 19,
+   "dow": "Tue",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "Core commands: ls, cd, cp, mv, grep, find.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-20",
+   "day": 20,
+   "dow": "Wed",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "Pipes, redirection and text tools (awk, sed, cut).",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-21",
+   "day": 21,
+   "dow": "Thu",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "Processes, services, systemd and cron.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-22",
+   "day": 22,
+   "dow": "Fri",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "OverTheWire Bandit levels 0 to 10.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-23",
+   "day": 23,
+   "dow": "Sat",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "Lab: Bandit levels 11 to 20. Build your own command cheat sheet.",
+   "type": "lab",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-24",
+   "day": 24,
+   "dow": "Sun",
+   "week": 3,
+   "weekTitle": "Linux I: the command line",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-25",
+   "day": 25,
+   "dow": "Mon",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Package management and network tools (ip, ss, curl).",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-26",
+   "day": 26,
+   "dow": "Tue",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Bash scripting: variables, loops and conditions.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-27",
+   "day": 27,
+   "dow": "Wed",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Write a script that pings a subnet and logs live hosts.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-28",
+   "day": 28,
+   "dow": "Thu",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Read /var/log files, especially auth.log.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-29",
+   "day": 29,
+   "dow": "Fri",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Hardening basics: SSH keys, ufw firewall, fail2ban.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-30",
+   "day": 30,
+   "dow": "Sat",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Project 2: Bash toolkit (host scanner plus log summarizer). Push it to GitHub.",
+   "type": "project",
+   "phase": 1
+  },
+  {
+   "date": "2027-01-31",
+   "day": 31,
+   "dow": "Sun",
+   "week": 4,
+   "weekTitle": "Linux II: scripting and hardening",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-01",
+   "day": 32,
+   "dow": "Mon",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Python setup, variables and data types.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-02",
+   "day": 33,
+   "dow": "Tue",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Control flow and functions.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-03",
+   "day": 34,
+   "dow": "Wed",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Lists, dictionaries, files and exceptions.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-04",
+   "day": 35,
+   "dow": "Thu",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Modules, pip and virtual environments.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-05",
+   "day": 36,
+   "dow": "Fri",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Solve 5 small practice problems (HackerRank or Exercism).",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-06",
+   "day": 37,
+   "dow": "Sat",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Lab: password strength checker and hash generator in Python.",
+   "type": "lab",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-07",
+   "day": 38,
+   "dow": "Sun",
+   "week": 5,
+   "weekTitle": "Python I: fundamentals",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-08",
+   "day": 39,
+   "dow": "Mon",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "The requests library and web APIs.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-09",
+   "day": 40,
+   "dow": "Tue",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "Sockets: a simple TCP client and server on your own machine.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-10",
+   "day": 41,
+   "dow": "Wed",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "Regular expressions and log parsing.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-11",
+   "day": 42,
+   "dow": "Thu",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "subprocess and argparse for command line tools.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-12",
+   "day": 43,
+   "dow": "Fri",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "Git and GitHub workflow: commits, branches, README files.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-13",
+   "day": 44,
+   "dow": "Sat",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "Project 3: Python port scanner plus log parser (use on your own lab only).",
+   "type": "project",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-14",
+   "day": 45,
+   "dow": "Sun",
+   "week": 6,
+   "weekTitle": "Python II: security automation",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-15",
+   "day": 46,
+   "dow": "Mon",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "CIA triad, risk, threats, vulnerabilities and controls.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-16",
+   "day": 47,
+   "dow": "Tue",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "Windows basics: users, registry, services, PowerShell.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-17",
+   "day": 48,
+   "dow": "Wed",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "Active Directory concepts: domain, GPO, Kerberos overview.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-18",
+   "day": 49,
+   "dow": "Thu",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "Authentication, MFA and access control models.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-19",
+   "day": 50,
+   "dow": "Fri",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "Attack overview: phishing, malware, DoS, man-in-the-middle.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-20",
+   "day": 51,
+   "dow": "Sat",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "Lab: set up a Windows evaluation VM and explore its event logs.",
+   "type": "lab",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-21",
+   "day": 52,
+   "dow": "Sun",
+   "week": 7,
+   "weekTitle": "Security fundamentals and Windows",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-22",
+   "day": 53,
+   "dow": "Mon",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "Symmetric vs asymmetric encryption. Hashing.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-23",
+   "day": 54,
+   "dow": "Tue",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "PKI, certificates, digital signatures and TLS.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-24",
+   "day": 55,
+   "dow": "Wed",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "ISC2 CC review: security principles, BC/DR/IR.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-25",
+   "day": 56,
+   "dow": "Thu",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "ISC2 CC review: access control, network security, operations.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-26",
+   "day": 57,
+   "dow": "Fri",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "ISC2 CC practice tests.",
+   "type": "study",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-27",
+   "day": 58,
+   "dow": "Sat",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "Take the ISC2 Certified in Cybersecurity (CC) exam if ready (check for a free offer). Otherwise do CyberChef and openssl exercises.",
+   "type": "exam",
+   "phase": 1
+  },
+  {
+   "date": "2027-02-28",
+   "day": 59,
+   "dow": "Sun",
+   "week": 8,
+   "weekTitle": "Cryptography and ISC2 CC",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 1
+  },
+  {
+   "date": "2027-03-01",
+   "day": 60,
+   "dow": "Mon",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Security+ exam objectives overview. Make a study plan.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-02",
+   "day": 61,
+   "dow": "Tue",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Security controls and frameworks (NIST, CIS, ISO 27001).",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-03",
+   "day": 62,
+   "dow": "Wed",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Zero trust, gap analysis and deception technology.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-04",
+   "day": 63,
+   "dow": "Thu",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Cryptographic solutions and PKI review.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-05",
+   "day": 64,
+   "dow": "Fri",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Domain 1 practice questions.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-06",
+   "day": 65,
+   "dow": "Sat",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Lab: TryHackMe Security Principles and Cryptography rooms.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-07",
+   "day": 66,
+   "dow": "Sun",
+   "week": 9,
+   "weekTitle": "Security+ I: general security concepts",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-08",
+   "day": 67,
+   "dow": "Mon",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Threat actors and motivations.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-09",
+   "day": 68,
+   "dow": "Tue",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Social engineering and phishing types.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-10",
+   "day": 69,
+   "dow": "Wed",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Malware types and indicators.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-11",
+   "day": 70,
+   "dow": "Thu",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Vulnerability types. CVE and CVSS scoring.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-12",
+   "day": 71,
+   "dow": "Fri",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Mitigation techniques. Domain 2 practice.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-13",
+   "day": 72,
+   "dow": "Sat",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Lab: run Nessus Essentials or OpenVAS against your own VM. Write a short report.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-14",
+   "day": 73,
+   "dow": "Sun",
+   "week": 10,
+   "weekTitle": "Security+ II: threats and vulnerabilities",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-15",
+   "day": 74,
+   "dow": "Mon",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Network architecture, segmentation and DMZ.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-16",
+   "day": 75,
+   "dow": "Tue",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Cloud models, virtualization and containers.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-17",
+   "day": 76,
+   "dow": "Wed",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Secure network devices: firewalls, IDS and IPS.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-18",
+   "day": 77,
+   "dow": "Thu",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Data protection, resilience and backups.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-19",
+   "day": 78,
+   "dow": "Fri",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Domain 3 practice.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-20",
+   "day": 79,
+   "dow": "Sat",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Lab: configure pfSense or OPNsense firewall rules between VMs.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-21",
+   "day": 80,
+   "dow": "Sun",
+   "week": 11,
+   "weekTitle": "Security+ III: architecture",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-22",
+   "day": 81,
+   "dow": "Mon",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "IAM, SSO, SAML and OAuth basics.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-23",
+   "day": 82,
+   "dow": "Tue",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "Hardening, patching and endpoint security.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-24",
+   "day": 83,
+   "dow": "Wed",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "Vulnerability management lifecycle.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-25",
+   "day": 84,
+   "dow": "Thu",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "Monitoring, SIEM and log sources.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-26",
+   "day": 85,
+   "dow": "Fri",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "Domain 4 practice.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-27",
+   "day": 86,
+   "dow": "Sat",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "Lab: install Wazuh or Security Onion and review the first alerts.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-28",
+   "day": 87,
+   "dow": "Sun",
+   "week": 12,
+   "weekTitle": "Security+ IV: operations I",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-29",
+   "day": 88,
+   "dow": "Mon",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Incident response phases (NIST SP 800-61).",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-30",
+   "day": 89,
+   "dow": "Tue",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Digital forensics basics and chain of custody.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-03-31",
+   "day": 90,
+   "dow": "Wed",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Automation, scripting and SOAR concepts.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-01",
+   "day": 91,
+   "dow": "Thu",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Threat intelligence and OSINT sources.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-02",
+   "day": 92,
+   "dow": "Fri",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Incident response practice questions.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-03",
+   "day": 93,
+   "dow": "Sat",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Project 4: write an incident response playbook for ransomware and phishing.",
+   "type": "project",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-04",
+   "day": 94,
+   "dow": "Sun",
+   "week": 13,
+   "weekTitle": "Security+ V: incident response",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-05",
+   "day": 95,
+   "dow": "Mon",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Risk management and risk registers.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-06",
+   "day": 96,
+   "dow": "Tue",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Compliance and privacy: GDPR, India DPDP Act, HIPAA.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-07",
+   "day": 97,
+   "dow": "Wed",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Third-party risk, policies and awareness training.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-08",
+   "day": 98,
+   "dow": "Thu",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Audits, business continuity and disaster recovery.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-09",
+   "day": 99,
+   "dow": "Fri",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Domain 5 practice.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-10",
+   "day": 100,
+   "dow": "Sat",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Lab: build a mini risk register for a fictional company.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-11",
+   "day": 101,
+   "dow": "Sun",
+   "week": 14,
+   "weekTitle": "Security+ VI: governance and risk",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-12",
+   "day": 102,
+   "dow": "Mon",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Full-length practice exam 1 (timed).",
+   "type": "exam",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-13",
+   "day": 103,
+   "dow": "Tue",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Review every wrong answer and note the reason.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-14",
+   "day": 104,
+   "dow": "Wed",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Full-length practice exam 2 (timed).",
+   "type": "exam",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-15",
+   "day": 105,
+   "dow": "Thu",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Review wrong answers. List weak topics.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-16",
+   "day": 106,
+   "dow": "Fri",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Study weak topics only.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-17",
+   "day": 107,
+   "dow": "Sat",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Practice performance-based questions (PBQs). Book the exam for next week.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-18",
+   "day": 108,
+   "dow": "Sun",
+   "week": 15,
+   "weekTitle": "Security+ VII: practice exams",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-19",
+   "day": 109,
+   "dow": "Mon",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "Final review of objectives and acronyms.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-20",
+   "day": 110,
+   "dow": "Tue",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "Flashcards and quick quizzes.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-21",
+   "day": 111,
+   "dow": "Wed",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "Light revision only. Check exam logistics and ID.",
+   "type": "study",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-22",
+   "day": 112,
+   "dow": "Thu",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "Rest. Short review before sleep.",
+   "type": "rest",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-23",
+   "day": 113,
+   "dow": "Fri",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "EXAM DAY: take CompTIA Security+ (verify the current exam code).",
+   "type": "exam",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-24",
+   "day": 114,
+   "dow": "Sat",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "Celebrate. Add the certification to your resume and LinkedIn.",
+   "type": "lab",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-25",
+   "day": 115,
+   "dow": "Sun",
+   "week": 16,
+   "weekTitle": "Security+ exam week",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 2
+  },
+  {
+   "date": "2027-04-26",
+   "day": 116,
+   "dow": "Mon",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Pentest phases, rules of engagement, law and ethics.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-04-27",
+   "day": 117,
+   "dow": "Tue",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Passive recon and OSINT: whois, Shodan, Google dorks.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-04-28",
+   "day": 118,
+   "dow": "Wed",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Subdomain enumeration: theHarvester, Amass.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-04-29",
+   "day": 119,
+   "dow": "Thu",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Active recon with Nmap basics.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-04-30",
+   "day": 120,
+   "dow": "Fri",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Start the TryHackMe Jr Penetration Tester path.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-01",
+   "day": 121,
+   "dow": "Sat",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Lab: write a recon report on an authorized target (TryHackMe, HTB or your own VM).",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-02",
+   "day": 122,
+   "dow": "Sun",
+   "week": 17,
+   "weekTitle": "Pentest methodology and recon",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-03",
+   "day": 123,
+   "dow": "Mon",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Nmap scripts and service or version detection.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-04",
+   "day": 124,
+   "dow": "Tue",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Enumerate SMB, FTP, SSH and SNMP.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-05",
+   "day": 125,
+   "dow": "Wed",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Web enumeration with gobuster, ffuf and nikto.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-06",
+   "day": 126,
+   "dow": "Thu",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Vulnerability research: searchsploit, CVEs, Exploit-DB.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-07",
+   "day": 127,
+   "dow": "Fri",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Hack The Box Starting Point machines.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-08",
+   "day": 128,
+   "dow": "Sat",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Lab: solve 3 easy machines and write a walkthrough for each.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-09",
+   "day": 129,
+   "dow": "Sun",
+   "week": 18,
+   "weekTitle": "Scanning and enumeration",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-10",
+   "day": 130,
+   "dow": "Mon",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "How web apps work: HTTP, sessions, JWT.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-11",
+   "day": 131,
+   "dow": "Tue",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "OWASP Top 10 overview.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-12",
+   "day": 132,
+   "dow": "Wed",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "Burp Suite setup: proxy and repeater.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-13",
+   "day": 133,
+   "dow": "Thu",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "Injection concepts and SQL injection basics.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-14",
+   "day": 134,
+   "dow": "Fri",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "PortSwigger Web Security Academy: SQL injection labs.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-15",
+   "day": 135,
+   "dow": "Sat",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "Lab: DVWA (low and medium) plus the first 10 OWASP Juice Shop challenges.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-16",
+   "day": 136,
+   "dow": "Sun",
+   "week": 19,
+   "weekTitle": "Web security I: foundations and SQL injection",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-17",
+   "day": 137,
+   "dow": "Mon",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "Cross-site scripting: reflected, stored and DOM.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-18",
+   "day": 138,
+   "dow": "Tue",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "PortSwigger XSS labs.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-19",
+   "day": 139,
+   "dow": "Wed",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "CSRF and clickjacking.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-20",
+   "day": 140,
+   "dow": "Thu",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "PortSwigger CSRF labs.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-21",
+   "day": 141,
+   "dow": "Fri",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "Authentication flaws and brute-force defenses.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-22",
+   "day": 142,
+   "dow": "Sat",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "Lab: 10 more Juice Shop challenges. Write a vulnerability report in standard format.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-23",
+   "day": 143,
+   "dow": "Sun",
+   "week": 20,
+   "weekTitle": "Web security II: XSS and CSRF",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-24",
+   "day": 144,
+   "dow": "Mon",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "Access control and IDOR.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-25",
+   "day": 145,
+   "dow": "Tue",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "SSRF, path traversal and file inclusion.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-26",
+   "day": 146,
+   "dow": "Wed",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "File upload vulnerabilities.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-27",
+   "day": 147,
+   "dow": "Thu",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "API security: OWASP API Top 10 and Postman.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-28",
+   "day": 148,
+   "dow": "Fri",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "PortSwigger access control and SSRF labs.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-29",
+   "day": 149,
+   "dow": "Sat",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "Project 5: web assessment of an intentionally vulnerable app. Full report with CVSS scores.",
+   "type": "project",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-30",
+   "day": 150,
+   "dow": "Sun",
+   "week": 21,
+   "weekTitle": "Web security III: access control and APIs",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-05-31",
+   "day": 151,
+   "dow": "Mon",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "Metasploit framework basics.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-01",
+   "day": 152,
+   "dow": "Tue",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "Reverse vs bind shells. Stabilize a shell.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-02",
+   "day": 153,
+   "dow": "Wed",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "Password attacks: hashcat, john, hydra (lab only).",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-03",
+   "day": 154,
+   "dow": "Thu",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "Modify a public exploit for a lab target.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-04",
+   "day": 155,
+   "dow": "Fri",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "TryHackMe or HTB exploitation rooms.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-05",
+   "day": 156,
+   "dow": "Sat",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "Lab: exploit Metasploitable and document each step.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-06",
+   "day": 157,
+   "dow": "Sun",
+   "week": 22,
+   "weekTitle": "Exploitation and passwords",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-07",
+   "day": 158,
+   "dow": "Mon",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "Enumeration with LinPEAS and manual checks.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-08",
+   "day": 159,
+   "dow": "Tue",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "SUID binaries, sudo misconfigurations, capabilities.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-09",
+   "day": 160,
+   "dow": "Wed",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "Cron jobs and PATH hijacking.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-10",
+   "day": 161,
+   "dow": "Thu",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "Kernel exploits and why they are a last resort.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-11",
+   "day": 162,
+   "dow": "Fri",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "GTFOBins practice.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-12",
+   "day": 163,
+   "dow": "Sat",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "Lab: TryHackMe Linux PrivEsc room plus 2 HTB boxes.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-13",
+   "day": 164,
+   "dow": "Sun",
+   "week": 23,
+   "weekTitle": "Linux privilege escalation",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-14",
+   "day": 165,
+   "dow": "Mon",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "Windows enumeration: WinPEAS and whoami /priv.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-15",
+   "day": 166,
+   "dow": "Tue",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "Service misconfigurations and unquoted service paths.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-16",
+   "day": 167,
+   "dow": "Wed",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "Token impersonation and AlwaysInstallElevated.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-17",
+   "day": 168,
+   "dow": "Thu",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "Credential hunting and Mimikatz concepts.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-18",
+   "day": 169,
+   "dow": "Fri",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "LOLBAS practice.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-19",
+   "day": 170,
+   "dow": "Sat",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "Lab: TryHackMe Windows PrivEsc room plus 2 HTB boxes.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-20",
+   "day": 171,
+   "dow": "Sun",
+   "week": 24,
+   "weekTitle": "Windows privilege escalation",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-21",
+   "day": 172,
+   "dow": "Mon",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "AD architecture: domain, forest, trusts.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-22",
+   "day": 173,
+   "dow": "Tue",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "Kerberos and NTLM authentication.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-23",
+   "day": 174,
+   "dow": "Wed",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "Enumeration with BloodHound and PowerView.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-24",
+   "day": 175,
+   "dow": "Thu",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "Password spraying and AS-REP roasting.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-25",
+   "day": 176,
+   "dow": "Fri",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "Kerberoasting.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-26",
+   "day": 177,
+   "dow": "Sat",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "Lab: build a mini AD lab (Windows Server evaluation plus a client).",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-27",
+   "day": 178,
+   "dow": "Sun",
+   "week": 25,
+   "weekTitle": "Active Directory attacks I",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-28",
+   "day": 179,
+   "dow": "Mon",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "Lateral movement basics: PsExec, WMI, pass-the-hash.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-29",
+   "day": 180,
+   "dow": "Tue",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "Pivoting: port forwarding, SSH tunnels, chisel.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-06-30",
+   "day": 181,
+   "dow": "Wed",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "Persistence concepts and how to detect them.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-01",
+   "day": 182,
+   "dow": "Thu",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "AD defenses: tiering, LAPS, logging.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-02",
+   "day": 183,
+   "dow": "Fri",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "Review the eJPT exam objectives.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-03",
+   "day": 184,
+   "dow": "Sat",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "Project 6: AD attack-and-defend write-up with detections.",
+   "type": "project",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-04",
+   "day": 185,
+   "dow": "Sun",
+   "week": 26,
+   "weekTitle": "Active Directory II and pivoting",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-05",
+   "day": 186,
+   "dow": "Mon",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "eJPT mock labs or practice boxes.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-06",
+   "day": 187,
+   "dow": "Tue",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "Network pentest practice.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-07",
+   "day": 188,
+   "dow": "Wed",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "Web and host pentest practice.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-08",
+   "day": 189,
+   "dow": "Thu",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "Revise notes. Rest.",
+   "type": "study",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-09",
+   "day": 190,
+   "dow": "Fri",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "EXAM DAY: take eJPT (confirm the current format and voucher).",
+   "type": "exam",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-10",
+   "day": 191,
+   "dow": "Sat",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "Review results and update your portfolio.",
+   "type": "lab",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-11",
+   "day": 192,
+   "dow": "Sun",
+   "week": 27,
+   "weekTitle": "eJPT exam week",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 3
+  },
+  {
+   "date": "2027-07-12",
+   "day": 193,
+   "dow": "Mon",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "SOC roles, tiers and workflows.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-13",
+   "day": 194,
+   "dow": "Tue",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "Log types: Windows events, syslog, web logs.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-14",
+   "day": 195,
+   "dow": "Wed",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "Splunk Free or Elastic: basic searches.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-15",
+   "day": 196,
+   "dow": "Thu",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "Detect brute force and port scans in logs.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-16",
+   "day": 197,
+   "dow": "Fri",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "LetsDefend or Blue Team Labs Online free challenges.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-17",
+   "day": 198,
+   "dow": "Sat",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "Lab: build a detection dashboard from your own lab logs.",
+   "type": "lab",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-18",
+   "day": 199,
+   "dow": "Sun",
+   "week": 28,
+   "weekTitle": "Blue team I: logs and SIEM",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-19",
+   "day": 200,
+   "dow": "Mon",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Map attacks to the MITRE ATT&CK framework.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-20",
+   "day": 201,
+   "dow": "Tue",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Sigma rules and detection engineering.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-21",
+   "day": 202,
+   "dow": "Wed",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Install and configure Sysmon. Learn key event IDs.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-22",
+   "day": 203,
+   "dow": "Thu",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Write 5 detections for attacks you ran in weeks 22 to 26.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-23",
+   "day": 204,
+   "dow": "Fri",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Threat hunting hypotheses.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-24",
+   "day": 205,
+   "dow": "Sat",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Project 7: purple-team report (attack, evidence, detection rule).",
+   "type": "project",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-25",
+   "day": 206,
+   "dow": "Sun",
+   "week": 29,
+   "weekTitle": "Blue team II: detection engineering",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-26",
+   "day": 207,
+   "dow": "Mon",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Disk and memory forensics concepts.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-27",
+   "day": 208,
+   "dow": "Tue",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Autopsy walkthrough and Volatility basics.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-28",
+   "day": 209,
+   "dow": "Wed",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Static malware analysis: strings, PE headers, VirusTotal.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-29",
+   "day": 210,
+   "dow": "Thu",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Dynamic analysis in an isolated VM (FlareVM or REMnux).",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-30",
+   "day": 211,
+   "dow": "Fri",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Phishing email analysis.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-07-31",
+   "day": 212,
+   "dow": "Sat",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Lab: CyberDefenders free challenge with a written solution.",
+   "type": "lab",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-01",
+   "day": 213,
+   "dow": "Sun",
+   "week": 30,
+   "weekTitle": "DFIR and malware analysis",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-02",
+   "day": 214,
+   "dow": "Mon",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "Cloud basics: shared responsibility, IaaS, PaaS, SaaS.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-03",
+   "day": 215,
+   "dow": "Tue",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "AWS free tier: IAM users, roles and policies.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-04",
+   "day": 216,
+   "dow": "Wed",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "S3 security, security groups and VPC basics.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-05",
+   "day": 217,
+   "dow": "Thu",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "CloudTrail and GuardDuty concepts.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-06",
+   "day": 218,
+   "dow": "Fri",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "Azure and Entra ID overview.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-07",
+   "day": 219,
+   "dow": "Sat",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "Lab: secure an S3 bucket, enable logging and set a billing alert.",
+   "type": "lab",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-08",
+   "day": 220,
+   "dow": "Sun",
+   "week": 31,
+   "weekTitle": "Cloud security I: AWS and Azure basics",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-09",
+   "day": 221,
+   "dow": "Mon",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "Common cloud misconfiguration attacks.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-10",
+   "day": 222,
+   "dow": "Tue",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "flaws.cloud levels 1 to 3.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-11",
+   "day": 223,
+   "dow": "Wed",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "flaws.cloud levels 4 to 6.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-12",
+   "day": 224,
+   "dow": "Thu",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "Docker and Kubernetes security basics.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-13",
+   "day": 225,
+   "dow": "Fri",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "Containerize one of your Python tools and scan it with Trivy.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-14",
+   "day": 226,
+   "dow": "Sat",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "Project 8: cloud misconfiguration audit with Prowler or ScoutSuite and a checklist.",
+   "type": "project",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-15",
+   "day": 227,
+   "dow": "Sun",
+   "week": 32,
+   "weekTitle": "Cloud security II: misconfigurations",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-16",
+   "day": 228,
+   "dow": "Mon",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "SC-900 modules: security, compliance and identity concepts.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-17",
+   "day": 229,
+   "dow": "Tue",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "Entra ID, authentication and governance.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-18",
+   "day": 230,
+   "dow": "Wed",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "Defender, Sentinel and Purview.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-19",
+   "day": 231,
+   "dow": "Thu",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "Take a practice assessment.",
+   "type": "study",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-20",
+   "day": 232,
+   "dow": "Fri",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "Review weak areas.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-21",
+   "day": 233,
+   "dow": "Sat",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "Take Microsoft SC-900 (or AWS Cloud Practitioner) exam.",
+   "type": "exam",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-22",
+   "day": 234,
+   "dow": "Sun",
+   "week": 33,
+   "weekTitle": "Cloud certification: SC-900 or AWS CCP",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 4
+  },
+  {
+   "date": "2027-08-23",
+   "day": 235,
+   "dow": "Mon",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "How LLMs work: tokens, context, RAG and agents.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-24",
+   "day": 236,
+   "dow": "Tue",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "OWASP Top 10 for LLM Applications.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-25",
+   "day": 237,
+   "dow": "Wed",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "Direct vs indirect prompt injection.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-26",
+   "day": 238,
+   "dow": "Thu",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "Jailbreak families and red-team ethics.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-27",
+   "day": 239,
+   "dow": "Fri",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "Practice in legal sandboxes (Gandalf, TryHackMe AI rooms).",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-28",
+   "day": 240,
+   "dow": "Sat",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "Lab: build a small local chatbot and test it yourself.",
+   "type": "lab",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-29",
+   "day": 241,
+   "dow": "Sun",
+   "week": 34,
+   "weekTitle": "AI security I: LLM attacks",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-30",
+   "day": 242,
+   "dow": "Mon",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "RAG security and data poisoning.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-08-31",
+   "day": 243,
+   "dow": "Tue",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "Agent tool abuse, excessive agency and MCP risks.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-01",
+   "day": 244,
+   "dow": "Wed",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "Defenses: guardrails, allow-lists, isolation.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-02",
+   "day": 245,
+   "dow": "Thu",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "NIST AI RMF and MITRE ATLAS overview.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-03",
+   "day": 246,
+   "dow": "Fri",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "Study the CLLMSE handbook.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-04",
+   "day": 247,
+   "dow": "Sat",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "Project 9: threat model and mitigation document for an LLM app.",
+   "type": "project",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-05",
+   "day": 248,
+   "dow": "Sun",
+   "week": 35,
+   "weekTitle": "AI security II: RAG, agents and defenses",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-06",
+   "day": 249,
+   "dow": "Mon",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "CLLMSP study (Red Team Leaders).",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-07",
+   "day": 250,
+   "dow": "Tue",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "Take CLLMSP (use the coupon if it is still valid).",
+   "type": "exam",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-08",
+   "day": 251,
+   "dow": "Wed",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "CLLMSE handbook domains 1 to 5.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-09",
+   "day": 252,
+   "dow": "Thu",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "CLLMSE handbook domains 6 to 9.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-10",
+   "day": 253,
+   "dow": "Fri",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "Practice with the cllmse-lab binary.",
+   "type": "study",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-11",
+   "day": 254,
+   "dow": "Sat",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "Take CLLMSE (6 hours, coupon if still valid). Write a blog post on what you learned.",
+   "type": "exam",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-12",
+   "day": 255,
+   "dow": "Sun",
+   "week": 36,
+   "weekTitle": "AI security certifications",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 5
+  },
+  {
+   "date": "2027-09-13",
+   "day": 256,
+   "dow": "Mon",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "PNPT exam overview and plan (or CPTS if you prefer HTB). Verify the current format.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-14",
+   "day": 257,
+   "dow": "Tue",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "OSINT and external recon for the engagement.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-15",
+   "day": 258,
+   "dow": "Wed",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "Network attack techniques review.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-16",
+   "day": 259,
+   "dow": "Thu",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "Continue AD attacks in depth.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-17",
+   "day": 260,
+   "dow": "Fri",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "Report writing: summary, findings, remediation.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-18",
+   "day": 261,
+   "dow": "Sat",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "Lab: full mock internal pentest in your AD lab.",
+   "type": "lab",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-19",
+   "day": 262,
+   "dow": "Sun",
+   "week": 37,
+   "weekTitle": "Advanced practical cert prep I (PNPT)",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-20",
+   "day": 263,
+   "dow": "Mon",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "LLMNR and NBT-NS poisoning, SMB relay.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-21",
+   "day": 264,
+   "dow": "Tue",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "Credential dumping and secretsdump.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-22",
+   "day": 265,
+   "dow": "Wed",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "Domain dominance concepts such as golden tickets (lab only).",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-23",
+   "day": 266,
+   "dow": "Thu",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "AD Certificate Services basics and common misconfigurations.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-24",
+   "day": 267,
+   "dow": "Fri",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "Practice one HTB Active Directory machine.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-25",
+   "day": 268,
+   "dow": "Sat",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "Lab: full AD attack chain with a written report.",
+   "type": "lab",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-26",
+   "day": 269,
+   "dow": "Sun",
+   "week": 38,
+   "weekTitle": "Advanced practical cert prep II (AD depth)",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-27",
+   "day": 270,
+   "dow": "Mon",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Web app pentest approach for an engagement.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-28",
+   "day": 271,
+   "dow": "Tue",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Burp extensions and automation.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-29",
+   "day": 272,
+   "dow": "Wed",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Report templates and CVSS scoring.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-09-30",
+   "day": 273,
+   "dow": "Thu",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Rehearse a 5-minute findings debrief.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-01",
+   "day": 274,
+   "dow": "Fri",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Ask for feedback on a redacted report from peers.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-02",
+   "day": 275,
+   "dow": "Sat",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Project 10: publish a sample pentest report on GitHub (fictional target).",
+   "type": "project",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-03",
+   "day": 276,
+   "dow": "Sun",
+   "week": 39,
+   "weekTitle": "Advanced practical cert prep III (web and reporting)",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-04",
+   "day": 277,
+   "dow": "Mon",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Mock day 1: recon and enumeration.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-05",
+   "day": 278,
+   "dow": "Tue",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Mock day 2: initial access.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-06",
+   "day": 279,
+   "dow": "Wed",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Mock day 3: Active Directory.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-07",
+   "day": 280,
+   "dow": "Thu",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Mock day 4: privilege escalation and pivoting.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-08",
+   "day": 281,
+   "dow": "Fri",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Mock day 5: write the report.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-09",
+   "day": 282,
+   "dow": "Sat",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Review gaps. Rest before the exam.",
+   "type": "lab",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-10",
+   "day": 283,
+   "dow": "Sun",
+   "week": 40,
+   "weekTitle": "Advanced cert mock week",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-11",
+   "day": 284,
+   "dow": "Mon",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Begin the PNPT (or chosen) practical exam. Day 1: recon.",
+   "type": "exam",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-12",
+   "day": 285,
+   "dow": "Tue",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Exam day 2.",
+   "type": "exam",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-13",
+   "day": 286,
+   "dow": "Wed",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Exam day 3.",
+   "type": "exam",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-14",
+   "day": 287,
+   "dow": "Thu",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Exam day 4.",
+   "type": "exam",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-15",
+   "day": 288,
+   "dow": "Fri",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Exam day 5. Start the report.",
+   "type": "exam",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-16",
+   "day": 289,
+   "dow": "Sat",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Finish the report and submit. Rest.",
+   "type": "lab",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-17",
+   "day": 290,
+   "dow": "Sun",
+   "week": 41,
+   "weekTitle": "Advanced cert exam week",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-18",
+   "day": 291,
+   "dow": "Mon",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Platforms: HackerOne, Bugcrowd, Intigriti. Read scope and rules.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-19",
+   "day": 292,
+   "dow": "Tue",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Pick vulnerability disclosure programs (VDPs). Read disclosed reports.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-20",
+   "day": 293,
+   "dow": "Wed",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Build a recon automation workflow.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-21",
+   "day": 294,
+   "dow": "Thu",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Hunt for IDOR and XSS on in-scope assets only.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-22",
+   "day": 295,
+   "dow": "Fri",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Report writing for triage teams.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-23",
+   "day": 296,
+   "dow": "Sat",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Lab: write 2 practice reports from disclosed examples.",
+   "type": "lab",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-24",
+   "day": 297,
+   "dow": "Sun",
+   "week": 42,
+   "weekTitle": "Bug bounty I: getting started",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-25",
+   "day": 298,
+   "dow": "Mon",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "JavaScript analysis and endpoint discovery.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-26",
+   "day": 299,
+   "dow": "Tue",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "Mobile app testing intro (Android, MobSF).",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-27",
+   "day": 300,
+   "dow": "Wed",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "API testing deep dive.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-28",
+   "day": 301,
+   "dow": "Thu",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "Business logic flaws.",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-29",
+   "day": 302,
+   "dow": "Fri",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "Hunting session (3 hours, in-scope only).",
+   "type": "study",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-30",
+   "day": 303,
+   "dow": "Sat",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "Project 11: bug-hunting journal. Disclose responsibly if you find anything.",
+   "type": "project",
+   "phase": 6
+  },
+  {
+   "date": "2027-10-31",
+   "day": 304,
+   "dow": "Sun",
+   "week": 43,
+   "weekTitle": "Bug bounty II: deeper hunting",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 6
+  },
+  {
+   "date": "2027-11-01",
+   "day": 305,
+   "dow": "Mon",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Pick the capstone: build, attack, detect and report on a small-business network.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-02",
+   "day": 306,
+   "dow": "Tue",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Plan the architecture and draw a diagram.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-03",
+   "day": 307,
+   "dow": "Wed",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Build the environment (AD, web server, Linux host).",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-04",
+   "day": 308,
+   "dow": "Thu",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Deploy monitoring (Wazuh, Sysmon).",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-05",
+   "day": 309,
+   "dow": "Fri",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Document the baseline.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-06",
+   "day": 310,
+   "dow": "Sat",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Capstone progress review. Fix anything unstable.",
+   "type": "lab",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-07",
+   "day": 311,
+   "dow": "Sun",
+   "week": 44,
+   "weekTitle": "Capstone I: design and build",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-08",
+   "day": 312,
+   "dow": "Mon",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Recon and initial access.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-09",
+   "day": 313,
+   "dow": "Tue",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Web exploitation.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-10",
+   "day": 314,
+   "dow": "Wed",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Privilege escalation.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-11",
+   "day": 315,
+   "dow": "Thu",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Active Directory compromise.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-12",
+   "day": 316,
+   "dow": "Fri",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Lateral movement and simulated data access.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-13",
+   "day": 317,
+   "dow": "Sat",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Collect evidence and screenshots.",
+   "type": "lab",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-14",
+   "day": 318,
+   "dow": "Sun",
+   "week": 45,
+   "weekTitle": "Capstone II: attack",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-15",
+   "day": 319,
+   "dow": "Mon",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Create detections for each attack step.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-16",
+   "day": 320,
+   "dow": "Tue",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Harden the environment and retest.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-17",
+   "day": 321,
+   "dow": "Wed",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Write the remediation plan.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-18",
+   "day": 322,
+   "dow": "Thu",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Write the final report (executive and technical).",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-19",
+   "day": 323,
+   "dow": "Fri",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Record a 10-minute demo video.",
+   "type": "study",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-20",
+   "day": 324,
+   "dow": "Sat",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Project 12: publish the capstone repo and a blog post.",
+   "type": "project",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-21",
+   "day": 325,
+   "dow": "Sun",
+   "week": 46,
+   "weekTitle": "Capstone III: defend and report",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 7
+  },
+  {
+   "date": "2027-11-22",
+   "day": 326,
+   "dow": "Mon",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "ATS-friendly resume: projects, certificates, labs.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-23",
+   "day": 327,
+   "dow": "Tue",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "LinkedIn headline, About section, Featured projects.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-24",
+   "day": 328,
+   "dow": "Wed",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "Polish GitHub READMEs. Pin your best 6 repos.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-25",
+   "day": 329,
+   "dow": "Thu",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "Build a simple portfolio site or blog.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-26",
+   "day": 330,
+   "dow": "Fri",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "Update HTB and TryHackMe profiles.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-27",
+   "day": 331,
+   "dow": "Sat",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "Ask 3 mentors or peers for resume feedback.",
+   "type": "lab",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-28",
+   "day": 332,
+   "dow": "Sun",
+   "week": 47,
+   "weekTitle": "Resume and portfolio",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-29",
+   "day": 333,
+   "dow": "Mon",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "Networking questions: OSI, TCP, DNS.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-11-30",
+   "day": 334,
+   "dow": "Tue",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "Fundamentals: CIA, crypto, IAM.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-01",
+   "day": 335,
+   "dow": "Wed",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "Web and pentest: OWASP, SQLi, XSS.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-02",
+   "day": 336,
+   "dow": "Thu",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "SOC: SIEM, incident response, detections.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-03",
+   "day": 337,
+   "dow": "Fri",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "Scenario: walk through an attack end to end.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-04",
+   "day": 338,
+   "dow": "Sat",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "Mock technical interview with a friend or peer.",
+   "type": "lab",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-05",
+   "day": 339,
+   "dow": "Sun",
+   "week": 48,
+   "weekTitle": "Technical interview prep",
+   "task": "Monthly review: score yourself on this month's goals, fix gaps, plan next month, rest.",
+   "type": "review",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-06",
+   "day": 340,
+   "dow": "Mon",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Write 5 STAR stories from your projects.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-07",
+   "day": 341,
+   "dow": "Tue",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Research roles: SOC analyst, junior pentester, GRC analyst.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-08",
+   "day": 342,
+   "dow": "Wed",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Apply to 10 jobs or internships.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-09",
+   "day": 343,
+   "dow": "Thu",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Send 10 LinkedIn outreach messages.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-10",
+   "day": 344,
+   "dow": "Fri",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Apply to 10 more.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-11",
+   "day": 345,
+   "dow": "Sat",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Mock interview 2. Fix weak answers.",
+   "type": "lab",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-12",
+   "day": 346,
+   "dow": "Sun",
+   "week": 49,
+   "weekTitle": "Behavioral prep and applications",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-13",
+   "day": 347,
+   "dow": "Mon",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Compare: OSCP, CRTP, CySA+, BTL1, CCSP.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-14",
+   "day": 348,
+   "dow": "Tue",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Pick based on your target role.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-15",
+   "day": 349,
+   "dow": "Wed",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Buy course or lab time and schedule the exam.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-16",
+   "day": 350,
+   "dow": "Thu",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Draft your 2028 plan.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-17",
+   "day": 351,
+   "dow": "Fri",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Start the first module.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-18",
+   "day": 352,
+   "dow": "Sat",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Lab: continue practice on your chosen path.",
+   "type": "lab",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-19",
+   "day": 353,
+   "dow": "Sun",
+   "week": 50,
+   "weekTitle": "Choose your next certification",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest.",
+   "type": "review",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-20",
+   "day": 354,
+   "dow": "Mon",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Update your skills tracker.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-21",
+   "day": 355,
+   "dow": "Tue",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Review and archive notes.",
+   "type": "review",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-22",
+   "day": 356,
+   "dow": "Wed",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Publish a post: My 2027 cybersecurity journey.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-23",
+   "day": 357,
+   "dow": "Thu",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Thank mentors and helpers.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-24",
+   "day": 358,
+   "dow": "Fri",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Rest and recover.",
+   "type": "rest",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-25",
+   "day": 359,
+   "dow": "Sat",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Lab: a fun CTF just for practice.",
+   "type": "lab",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-26",
+   "day": 360,
+   "dow": "Sun",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Weekly review: revise notes, push work to GitHub, update your tracker, then rest. Final days | 27 Dec to 31 Dec | Wrap-up and look ahead",
+   "type": "review",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-27",
+   "day": 361,
+   "dow": "Mon",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Join a public CTF (picoCTF or one from CTFtime).",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-28",
+   "day": 362,
+   "dow": "Tue",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Plan Q1 2028 goals and the next certification.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-29",
+   "day": 363,
+   "dow": "Wed",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Update LinkedIn and your resume with all 2027 achievements.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-30",
+   "day": 364,
+   "dow": "Thu",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Follow up on applications and recruiter messages.",
+   "type": "study",
+   "phase": 8
+  },
+  {
+   "date": "2027-12-31",
+   "day": 365,
+   "dow": "Fri",
+   "week": 51,
+   "weekTitle": "Year review",
+   "task": "Year-end retrospective: what worked, what to change. Well done!",
+   "type": "study",
+   "phase": 8
+  }
+ ],
+ "projects": [
+  {
+   "num": 1,
+   "week": 2,
+   "name": "Home network in Packet Tracer",
+   "deliverable": "Network diagram and a short report.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 2,
+   "week": 4,
+   "name": "Bash security toolkit",
+   "deliverable": "Host scanner and log summarizer scripts.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 3,
+   "week": 6,
+   "name": "Python port scanner and log parser",
+   "deliverable": "Documented tool, usage guide, limits.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 4,
+   "week": 13,
+   "name": "Incident response playbook",
+   "deliverable": "Ransomware and phishing playbooks with steps and roles.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 5,
+   "week": 21,
+   "name": "Web security assessment",
+   "deliverable": "Report on an intentionally vulnerable app with CVSS scores.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 6,
+   "week": 26,
+   "name": "AD attack-and-defend write-up",
+   "deliverable": "Attack chain plus detections and fixes.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 7,
+   "week": 29,
+   "name": "Purple-team report",
+   "deliverable": "Attack, evidence, detection rule for 5 techniques.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 8,
+   "week": 32,
+   "name": "Cloud misconfiguration audit",
+   "deliverable": "Prowler or ScoutSuite findings and a hardening checklist.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 9,
+   "week": 35,
+   "name": "LLM application threat model",
+   "deliverable": "Threat model with OWASP LLM Top 10 mapping and mitigations.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 10,
+   "week": 39,
+   "name": "Sample pentest report",
+   "deliverable": "Professional report on a fictional target.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 11,
+   "week": 43,
+   "name": "Bug-hunting journal",
+   "deliverable": "Methodology notes and any responsible disclosures.",
+   "github": "",
+   "status": "not-started"
+  },
+  {
+   "num": 12,
+   "week": 46,
+   "name": "Capstone: small-business network",
+   "deliverable": "Build, attack, detect, harden, report and a 10-minute demo video.",
+   "github": "",
+   "status": "not-started"
+  }
+ ],
+ "certs": [
+  {
+   "id": "isc2cc",
+   "name": "ISC2 Certified in Cybersecurity (CC)",
+   "targetLabel": "Week 8 (Feb)",
+   "targetDay": 58,
+   "targetDate": "",
+   "examDate": "",
+   "status": "planned",
+   "cost": "Often free or low",
+   "score": "",
+   "notes": ""
+  },
+  {
+   "id": "secplus",
+   "name": "CompTIA Security+",
+   "targetLabel": "Fri 23 Apr",
+   "targetDay": 113,
+   "targetDate": "",
+   "examDate": "",
+   "status": "planned",
+   "cost": "about USD 400",
+   "score": "",
+   "notes": ""
+  },
+  {
+   "id": "ejpt",
+   "name": "INE eJPT",
+   "targetLabel": "Fri 09 Jul",
+   "targetDay": 190,
+   "targetDate": "",
+   "examDate": "",
+   "status": "planned",
+   "cost": "about USD 250",
+   "score": "",
+   "notes": ""
+  },
+  {
+   "id": "sc900",
+   "name": "Microsoft SC-900 (or AWS CCP)",
+   "targetLabel": "Sat 21 Aug",
+   "targetDay": 233,
+   "targetDate": "",
+   "examDate": "",
+   "status": "planned",
+   "cost": "about USD 100 (regional pricing lower)",
+   "score": "",
+   "notes": ""
+  },
+  {
+   "id": "cllm",
+   "name": "Red Team Leaders CLLMSP / CLLMSE",
+   "targetLabel": "Sep (week 36)",
+   "targetDay": 250,
+   "targetDate": "",
+   "examDate": "",
+   "status": "planned",
+   "cost": "Coupon price or low",
+   "score": "",
+   "notes": ""
+  },
+  {
+   "id": "pnpt",
+   "name": "TCM PNPT (or HTB CPTS)",
+   "targetLabel": "Oct (week 41)",
+   "targetDay": 284,
+   "targetDate": "",
+   "examDate": "",
+   "status": "planned",
+   "cost": "about USD 400",
+   "score": "",
+   "notes": ""
+  }
+ ],
+ "milestones": [
+  {
+   "id": 1,
+   "done": false,
+   "milestone": "Lab and accounts ready (GitHub, LinkedIn, TryHackMe, HTB)",
+   "target": "03 Jan",
+   "targetDay": 3
+  },
+  {
+   "id": 2,
+   "done": false,
+   "milestone": "Project 3 published (Python port scanner)",
+   "target": "13 Feb",
+   "targetDay": 44
+  },
+  {
+   "id": 3,
+   "done": false,
+   "milestone": "ISC2 CC passed",
+   "target": "Feb",
+   "targetDay": 0
+  },
+  {
+   "id": 4,
+   "done": false,
+   "milestone": "CompTIA Security+ passed",
+   "target": "23 Apr",
+   "targetDay": 113
+  },
+  {
+   "id": 5,
+   "done": false,
+   "milestone": "Project 5 published (web assessment)",
+   "target": "29 May",
+   "targetDay": 149
+  },
+  {
+   "id": 6,
+   "done": false,
+   "milestone": "eJPT passed",
+   "target": "09 Jul",
+   "targetDay": 190
+  },
+  {
+   "id": 7,
+   "done": false,
+   "milestone": "Project 7 published (purple-team report)",
+   "target": "24 Jul",
+   "targetDay": 205
+  },
+  {
+   "id": 8,
+   "done": false,
+   "milestone": "SC-900 or AWS CCP passed",
+   "target": "21 Aug",
+   "targetDay": 233
+  },
+  {
+   "id": 9,
+   "done": false,
+   "milestone": "CLLMSP and CLLMSE attempted",
+   "target": "Sep",
+   "targetDay": 0
+  },
+  {
+   "id": 10,
+   "done": false,
+   "milestone": "PNPT or CPTS attempted",
+   "target": "Oct",
+   "targetDay": 0
+  },
+  {
+   "id": 11,
+   "done": false,
+   "milestone": "Capstone published with demo video",
+   "target": "20 Nov",
+   "targetDay": 324
+  },
+  {
+   "id": 12,
+   "done": false,
+   "milestone": "First 10 internship or job applications sent",
+   "target": "Mar for internships, Dec for jobs",
+   "targetDay": 0
+  },
+  {
+   "id": 13,
+   "done": false,
+   "milestone": "40+ applications and 5+ interviews",
+   "target": "Dec",
+   "targetDay": 0
+  }
+ ],
+ "cards": [
+  {
+   "week": 0,
+   "topic": "Lab setup",
+   "q": "Why take a VM snapshot before a risky lab?",
+   "a": "It lets you roll back to a known-good state in seconds if the lab breaks the machine.",
+   "source": "starter"
+  },
+  {
+   "week": 0,
+   "topic": "Lab setup",
+   "q": "Which VirtualBox network mode keeps a lab VM away from your home LAN?",
+   "a": "Host-only (or Internal) network. NAT gives internet but no inbound access.",
+   "source": "starter"
+  },
+  {
+   "week": 1,
+   "topic": "Networking",
+   "q": "List the OSI layers from 7 down to 1.",
+   "a": "Application, Presentation, Session, Transport, Network, Data Link, Physical.",
+   "source": "starter"
+  },
+  {
+   "week": 1,
+   "topic": "Networking",
+   "q": "TCP vs UDP: what is the key difference?",
+   "a": "TCP is connection-oriented and reliable (handshake, ordering, retransmit). UDP is connectionless and faster but gives no delivery guarantee.",
+   "source": "starter"
+  },
+  {
+   "week": 1,
+   "topic": "Networking",
+   "q": "What is the TCP three-way handshake?",
+   "a": "SYN, then SYN-ACK, then ACK.",
+   "source": "starter"
+  },
+  {
+   "week": 1,
+   "topic": "Networking",
+   "q": "How many usable host addresses are in a /24 IPv4 subnet?",
+   "a": "254 (256 addresses minus the network and broadcast addresses).",
+   "source": "starter"
+  },
+  {
+   "week": 1,
+   "topic": "Networking",
+   "q": "What range are the well-known ports?",
+   "a": "0 to 1023.",
+   "source": "starter"
+  },
+  {
+   "week": 2,
+   "topic": "Networking",
+   "q": "What does ARP do?",
+   "a": "Maps an IPv4 address to a MAC address on the local network.",
+   "source": "starter"
+  },
+  {
+   "week": 2,
+   "topic": "Networking",
+   "q": "What are the four steps of DHCP?",
+   "a": "Discover, Offer, Request, Acknowledge (DORA).",
+   "source": "starter"
+  },
+  {
+   "week": 2,
+   "topic": "Networking",
+   "q": "Which DNS record maps a name to an IPv4 address? To a mail server?",
+   "a": "A record for IPv4 (AAAA for IPv6). MX record for mail servers.",
+   "source": "starter"
+  },
+  {
+   "week": 2,
+   "topic": "Networking",
+   "q": "What is the difference between an IDS and an IPS?",
+   "a": "An IDS detects and alerts. An IPS sits inline and can also block the traffic.",
+   "source": "starter"
+  },
+  {
+   "week": 2,
+   "topic": "Networking",
+   "q": "What does NAT do?",
+   "a": "Translates private internal addresses to a public address (and back) at the network edge.",
+   "source": "starter"
+  },
+  {
+   "week": 3,
+   "topic": "Linux",
+   "q": "What does permission 754 mean on a file?",
+   "a": "Owner: read+write+execute (7). Group: read+execute (5). Others: read only (4).",
+   "source": "starter"
+  },
+  {
+   "week": 3,
+   "topic": "Linux",
+   "q": "Which command finds files named config.txt anywhere under /etc?",
+   "a": "find /etc -name config.txt",
+   "source": "starter"
+  },
+  {
+   "week": 3,
+   "topic": "Linux",
+   "q": "What is the difference between > and >> in a shell?",
+   "a": "> overwrites the file. >> appends to it.",
+   "source": "starter"
+  },
+  {
+   "week": 3,
+   "topic": "Linux",
+   "q": "What does the pipe | do?",
+   "a": "Sends the standard output of one command into the standard input of the next.",
+   "source": "starter"
+  },
+  {
+   "week": 4,
+   "topic": "Linux",
+   "q": "Where does Debian/Ubuntu log SSH logins and sudo use?",
+   "a": "/var/log/auth.log",
+   "source": "starter"
+  },
+  {
+   "week": 4,
+   "topic": "Linux",
+   "q": "Name three basic SSH hardening steps.",
+   "a": "Use key-based auth, disable password login and root login, limit users and allowed IPs (plus a firewall such as ufw and fail2ban).",
+   "source": "starter"
+  },
+  {
+   "week": 4,
+   "topic": "Linux",
+   "q": "What does fail2ban do?",
+   "a": "Watches logs for repeated failures and temporarily bans the offending IP with firewall rules.",
+   "source": "starter"
+  },
+  {
+   "week": 4,
+   "topic": "Linux",
+   "q": "Which tool shows listening sockets on a modern Linux system?",
+   "a": "ss (for example ss -tulpn). It replaces netstat.",
+   "source": "starter"
+  },
+  {
+   "week": 5,
+   "topic": "Python",
+   "q": "Which Python type stores key-value pairs?",
+   "a": "dict (dictionary).",
+   "source": "starter"
+  },
+  {
+   "week": 5,
+   "topic": "Python",
+   "q": "Why use a virtual environment?",
+   "a": "To isolate a project's packages and versions from the system and from other projects.",
+   "source": "starter"
+  },
+  {
+   "week": 5,
+   "topic": "Python",
+   "q": "What does a try/except block do?",
+   "a": "Catches an exception so the program can handle the error instead of crashing.",
+   "source": "starter"
+  },
+  {
+   "week": 6,
+   "topic": "Python",
+   "q": "Which library is the usual choice for HTTP requests in Python scripts?",
+   "a": "requests.",
+   "source": "starter"
+  },
+  {
+   "week": 6,
+   "topic": "Python",
+   "q": "Which module builds command line interfaces with flags and help text?",
+   "a": "argparse.",
+   "source": "starter"
+  },
+  {
+   "week": 6,
+   "topic": "Python",
+   "q": "Which module parses text with patterns, for example log lines?",
+   "a": "re (regular expressions).",
+   "source": "starter"
+  },
+  {
+   "week": 7,
+   "topic": "Security basics",
+   "q": "What are the three parts of the CIA triad?",
+   "a": "Confidentiality, Integrity, Availability.",
+   "source": "starter"
+  },
+  {
+   "week": 7,
+   "topic": "Security basics",
+   "q": "What is the principle of least privilege?",
+   "a": "Give users and processes only the access they need to do their job, nothing more.",
+   "source": "starter"
+  },
+  {
+   "week": 7,
+   "topic": "Windows",
+   "q": "Which Windows Event ID records a successful logon?",
+   "a": "4624 (4625 is a failed logon).",
+   "source": "starter"
+  },
+  {
+   "week": 7,
+   "topic": "Windows",
+   "q": "What is the Windows Registry?",
+   "a": "A hierarchical database holding configuration for the OS, hardware, users and software.",
+   "source": "starter"
+  },
+  {
+   "week": 8,
+   "topic": "Cryptography",
+   "q": "Symmetric vs asymmetric encryption: how many keys?",
+   "a": "Symmetric uses one shared key (fast, for bulk data). Asymmetric uses a public/private key pair (key exchange, signatures).",
+   "source": "starter"
+  },
+  {
+   "week": 8,
+   "topic": "Cryptography",
+   "q": "Hashing vs encryption: what is the difference?",
+   "a": "Hashing is one-way and fixed-length (integrity). Encryption is reversible with the key (confidentiality).",
+   "source": "starter"
+  },
+  {
+   "week": 8,
+   "topic": "Cryptography",
+   "q": "Why are passwords stored with a salt?",
+   "a": "A unique random salt makes identical passwords hash differently and defeats precomputed rainbow tables.",
+   "source": "starter"
+  },
+  {
+   "week": 8,
+   "topic": "Cryptography",
+   "q": "Which key signs a message in a digital signature?",
+   "a": "The sender's private key. Anyone verifies it with the sender's public key.",
+   "source": "starter"
+  },
+  {
+   "week": 8,
+   "topic": "Cryptography",
+   "q": "What are common AES key sizes?",
+   "a": "128, 192 and 256 bits.",
+   "source": "starter"
+  },
+  {
+   "week": 9,
+   "topic": "Security+",
+   "q": "What does AAA stand for in security?",
+   "a": "Authentication, Authorization, Accounting.",
+   "source": "starter"
+  },
+  {
+   "week": 9,
+   "topic": "Security+",
+   "q": "Name the four functional control types.",
+   "a": "Preventive, detective, corrective and deterrent (compensating and directive are also used).",
+   "source": "starter"
+  },
+  {
+   "week": 9,
+   "topic": "Security+",
+   "q": "What is the core idea of Zero Trust?",
+   "a": "Never trust, always verify: authenticate and authorize every request, regardless of network location.",
+   "source": "starter"
+  },
+  {
+   "week": 9,
+   "topic": "Security+",
+   "q": "What is non-repudiation?",
+   "a": "Proof that someone performed an action so they cannot credibly deny it (for example digital signatures and logs).",
+   "source": "starter"
+  },
+  {
+   "week": 10,
+   "topic": "Security+",
+   "q": "What is the difference between phishing and spear phishing?",
+   "a": "Phishing is mass deceptive messaging. Spear phishing targets a specific person or group with tailored details.",
+   "source": "starter"
+  },
+  {
+   "week": 10,
+   "topic": "Security+",
+   "q": "What is a zero-day vulnerability?",
+   "a": "A flaw unknown to the vendor, with no patch available yet.",
+   "source": "starter"
+  },
+  {
+   "week": 10,
+   "topic": "Security+",
+   "q": "What does CVSS score?",
+   "a": "The severity of a vulnerability on a 0.0 to 10.0 scale.",
+   "source": "starter"
+  },
+  {
+   "week": 10,
+   "topic": "Security+",
+   "q": "What is a DDoS attack?",
+   "a": "Many systems flood a target so legitimate users cannot reach it (an attack on availability).",
+   "source": "starter"
+  },
+  {
+   "week": 11,
+   "topic": "Security+",
+   "q": "What is a DMZ?",
+   "a": "A network segment between the internet and the internal network that hosts public-facing services.",
+   "source": "starter"
+  },
+  {
+   "week": 11,
+   "topic": "Security+",
+   "q": "What is defense in depth?",
+   "a": "Layering several independent controls so one failure does not expose everything.",
+   "source": "starter"
+  },
+  {
+   "week": 11,
+   "topic": "Security+",
+   "q": "In the cloud shared responsibility model, who secures the customer's data?",
+   "a": "The customer. The provider secures the underlying infrastructure.",
+   "source": "starter"
+  },
+  {
+   "week": 11,
+   "topic": "Security+",
+   "q": "Why use network segmentation or VLANs?",
+   "a": "To limit lateral movement and contain the blast radius of a compromise.",
+   "source": "starter"
+  },
+  {
+   "week": 12,
+   "topic": "Security+",
+   "q": "What does a SIEM do?",
+   "a": "Collects and correlates logs from many sources to detect and alert on security events.",
+   "source": "starter"
+  },
+  {
+   "week": 12,
+   "topic": "Security+",
+   "q": "Name the three classic authentication factors.",
+   "a": "Something you know, something you have, something you are.",
+   "source": "starter"
+  },
+  {
+   "week": 12,
+   "topic": "Security+",
+   "q": "Credentialed vs non-credentialed vulnerability scan?",
+   "a": "Credentialed logs in and sees more detail with fewer false positives. Non-credentialed sees only what an outsider sees.",
+   "source": "starter"
+  },
+  {
+   "week": 13,
+   "topic": "Incident response",
+   "q": "List the NIST incident response phases.",
+   "a": "Preparation; Detection and Analysis; Containment, Eradication and Recovery; Post-Incident Activity.",
+   "source": "starter"
+  },
+  {
+   "week": 13,
+   "topic": "Incident response",
+   "q": "What is chain of custody?",
+   "a": "Documented record of who handled evidence and when, to keep it admissible and trustworthy.",
+   "source": "starter"
+  },
+  {
+   "week": 13,
+   "topic": "Incident response",
+   "q": "Which evidence is collected first: RAM or disk?",
+   "a": "RAM first. It is more volatile (order of volatility).",
+   "source": "starter"
+  },
+  {
+   "week": 14,
+   "topic": "Risk",
+   "q": "How is annualized loss expectancy (ALE) calculated?",
+   "a": "ALE = SLE (single loss expectancy) x ARO (annualized rate of occurrence).",
+   "source": "starter"
+  },
+  {
+   "week": 14,
+   "topic": "Risk",
+   "q": "Name the four common risk responses.",
+   "a": "Mitigate, transfer, accept, avoid.",
+   "source": "starter"
+  },
+  {
+   "week": 14,
+   "topic": "Risk",
+   "q": "What does RTO mean? RPO?",
+   "a": "RTO: the maximum acceptable time to restore service. RPO: the maximum acceptable amount of data loss measured in time.",
+   "source": "starter"
+  },
+  {
+   "week": 15,
+   "topic": "Exam skills",
+   "q": "What is a performance-based question (PBQ)?",
+   "a": "A hands-on simulation task on the exam (for example configure a firewall rule) instead of multiple choice.",
+   "source": "starter"
+  },
+  {
+   "week": 15,
+   "topic": "Exam skills",
+   "q": "Good tactic for a PBQ on a timed exam?",
+   "a": "Skip it first, answer the multiple choice, then return with the time that is left.",
+   "source": "starter"
+  },
+  {
+   "week": 16,
+   "topic": "Exam skills",
+   "q": "What should you check the day before a proctored exam?",
+   "a": "ID, exam logistics and appointment time, system and room requirements, then rest.",
+   "source": "starter"
+  },
+  {
+   "week": 17,
+   "topic": "Pentest",
+   "q": "List the classic pentest phases.",
+   "a": "Reconnaissance, scanning and enumeration, gaining access, maintaining access, covering tracks (plus reporting).",
+   "source": "starter"
+  },
+  {
+   "week": 17,
+   "topic": "Pentest",
+   "q": "Passive vs active reconnaissance?",
+   "a": "Passive collects public information without touching the target (WHOIS, search engines). Active interacts with the target (port scans).",
+   "source": "starter"
+  },
+  {
+   "week": 17,
+   "topic": "Pentest",
+   "q": "What is OSINT?",
+   "a": "Open-source intelligence: information gathered from publicly available sources.",
+   "source": "starter"
+  },
+  {
+   "week": 17,
+   "topic": "Pentest",
+   "q": "What must exist before any pentest starts?",
+   "a": "Written authorization with a defined scope and rules of engagement.",
+   "source": "starter"
+  },
+  {
+   "week": 18,
+   "topic": "Scanning",
+   "q": "Which nmap flag runs a TCP SYN (half-open) scan?",
+   "a": "-sS",
+   "source": "starter"
+  },
+  {
+   "week": 18,
+   "topic": "Scanning",
+   "q": "Which nmap flags detect service versions and run default scripts?",
+   "a": "-sV for versions, -sC for default scripts (-A also adds OS detection and traceroute).",
+   "source": "starter"
+  },
+  {
+   "week": 18,
+   "topic": "Scanning",
+   "q": "How many ports does nmap scan by default?",
+   "a": "The 1000 most common TCP ports. Use -p- for all 65535.",
+   "source": "starter"
+  },
+  {
+   "week": 18,
+   "topic": "Scanning",
+   "q": "What does nmap -sn do?",
+   "a": "A ping sweep for host discovery without a port scan.",
+   "source": "starter"
+  },
+  {
+   "week": 19,
+   "topic": "Web security",
+   "q": "What does the payload ' OR 1=1-- test for?",
+   "a": "SQL injection: it tries to make a WHERE condition always true and comment out the rest of the query.",
+   "source": "starter"
+  },
+  {
+   "week": 19,
+   "topic": "Web security",
+   "q": "What is the primary defense against SQL injection?",
+   "a": "Parameterized queries (prepared statements), plus input validation and least-privilege DB accounts.",
+   "source": "starter"
+  },
+  {
+   "week": 19,
+   "topic": "Web security",
+   "q": "Which tool automates SQL injection testing?",
+   "a": "sqlmap.",
+   "source": "starter"
+  },
+  {
+   "week": 20,
+   "topic": "Web security",
+   "q": "Name the three types of XSS.",
+   "a": "Reflected, stored (persistent) and DOM-based.",
+   "source": "starter"
+  },
+  {
+   "week": 20,
+   "topic": "Web security",
+   "q": "How does a CSRF token help?",
+   "a": "The server requires a secret per-session value that an attacker's forged request cannot supply.",
+   "source": "starter"
+  },
+  {
+   "week": 20,
+   "topic": "Web security",
+   "q": "What does a Content Security Policy (CSP) do?",
+   "a": "Restricts which sources scripts and other resources may load from, reducing XSS impact.",
+   "source": "starter"
+  },
+  {
+   "week": 20,
+   "topic": "Web security",
+   "q": "What does the HttpOnly cookie flag do?",
+   "a": "Prevents JavaScript from reading the cookie, limiting theft via XSS.",
+   "source": "starter"
+  },
+  {
+   "week": 21,
+   "topic": "Web security",
+   "q": "What is IDOR?",
+   "a": "Insecure direct object reference: changing an ID in a request returns another user's data because access is not checked.",
+   "source": "starter"
+  },
+  {
+   "week": 21,
+   "topic": "Web security",
+   "q": "What is SSRF?",
+   "a": "Server-side request forgery: tricking a server into making requests to internal or attacker-chosen resources.",
+   "source": "starter"
+  },
+  {
+   "week": 21,
+   "topic": "Web security",
+   "q": "What is BOLA in API security?",
+   "a": "Broken object level authorization: the API does not verify the caller may access the requested object (API version of IDOR).",
+   "source": "starter"
+  },
+  {
+   "week": 22,
+   "topic": "Exploitation",
+   "q": "Reverse shell vs bind shell?",
+   "a": "Reverse: the target connects out to the attacker. Bind: the target opens a port and the attacker connects in.",
+   "source": "starter"
+  },
+  {
+   "week": 22,
+   "topic": "Exploitation",
+   "q": "Brute force vs password spraying?",
+   "a": "Brute force tries many passwords on one account. Spraying tries a few common passwords across many accounts to avoid lockouts.",
+   "source": "starter"
+  },
+  {
+   "week": 22,
+   "topic": "Exploitation",
+   "q": "Name two offline password cracking tools.",
+   "a": "hashcat and John the Ripper.",
+   "source": "starter"
+  },
+  {
+   "week": 23,
+   "topic": "Privilege escalation",
+   "q": "Command to list files with the SUID bit on Linux?",
+   "a": "find / -perm -4000 2>/dev/null",
+   "source": "starter"
+  },
+  {
+   "week": 23,
+   "topic": "Privilege escalation",
+   "q": "Which command shows what the current user may run with sudo?",
+   "a": "sudo -l",
+   "source": "starter"
+  },
+  {
+   "week": 23,
+   "topic": "Privilege escalation",
+   "q": "What is GTFOBins?",
+   "a": "A list of Unix binaries that can be abused for privilege escalation, file access or shells when misconfigured.",
+   "source": "starter"
+  },
+  {
+   "week": 24,
+   "topic": "Privilege escalation",
+   "q": "What is an unquoted service path vulnerability?",
+   "a": "A Windows service path with spaces and no quotes lets an attacker place an executable earlier in the path that the service then runs.",
+   "source": "starter"
+  },
+  {
+   "week": 24,
+   "topic": "Privilege escalation",
+   "q": "Which command shows the current token privileges on Windows?",
+   "a": "whoami /priv",
+   "source": "starter"
+  },
+  {
+   "week": 24,
+   "topic": "Privilege escalation",
+   "q": "Name an enumeration script for Windows privilege escalation.",
+   "a": "WinPEAS (or PowerUp, Seatbelt).",
+   "source": "starter"
+  },
+  {
+   "week": 25,
+   "topic": "Active Directory",
+   "q": "What is Kerberoasting?",
+   "a": "Requesting service tickets for accounts with SPNs and cracking them offline to recover the service account password.",
+   "source": "starter"
+  },
+  {
+   "week": 25,
+   "topic": "Active Directory",
+   "q": "What is a pass-the-hash attack?",
+   "a": "Authenticating with a captured NTLM hash instead of the plaintext password.",
+   "source": "starter"
+  },
+  {
+   "week": 25,
+   "topic": "Active Directory",
+   "q": "Which tool maps attack paths in an AD environment?",
+   "a": "BloodHound.",
+   "source": "starter"
+  },
+  {
+   "week": 25,
+   "topic": "Active Directory",
+   "q": "Which Kerberos ticket proves identity first: TGT or TGS?",
+   "a": "The TGT (ticket-granting ticket). It is then used to request service tickets (TGS).",
+   "source": "starter"
+  },
+  {
+   "week": 26,
+   "topic": "Active Directory",
+   "q": "What does a DCSync attack do?",
+   "a": "Abuses replication rights to ask a domain controller for password hashes of accounts.",
+   "source": "starter"
+  },
+  {
+   "week": 26,
+   "topic": "Pivoting",
+   "q": "Which ssh flag creates a local port forward?",
+   "a": "-L (local forward). -D creates a dynamic SOCKS proxy.",
+   "source": "starter"
+  },
+  {
+   "week": 26,
+   "topic": "Pivoting",
+   "q": "What does proxychains do?",
+   "a": "Routes the traffic of a tool through one or more proxies, such as a SOCKS tunnel.",
+   "source": "starter"
+  },
+  {
+   "week": 26,
+   "topic": "Active Directory",
+   "q": "What is needed to forge a Golden Ticket?",
+   "a": "The hash of the krbtgt account and the domain SID.",
+   "source": "starter"
+  },
+  {
+   "week": 27,
+   "topic": "eJPT",
+   "q": "Which phase comes right after host discovery in a typical engagement?",
+   "a": "Port scanning and service enumeration.",
+   "source": "starter"
+  },
+  {
+   "week": 27,
+   "topic": "eJPT",
+   "q": "Why keep detailed notes during a practical exam?",
+   "a": "You must reproduce findings and answer questions later. Notes of every command and result save time.",
+   "source": "starter"
+  },
+  {
+   "week": 28,
+   "topic": "Blue team",
+   "q": "Which Sysmon event ID records process creation?",
+   "a": "Event ID 1.",
+   "source": "starter"
+  },
+  {
+   "week": 28,
+   "topic": "Blue team",
+   "q": "Which Windows Event ID records process creation in the Security log?",
+   "a": "4688 (when process auditing is enabled).",
+   "source": "starter"
+  },
+  {
+   "week": 28,
+   "topic": "Blue team",
+   "q": "What is log correlation?",
+   "a": "Linking events from different sources into a single story or alert, for example failed logins followed by a success.",
+   "source": "starter"
+  },
+  {
+   "week": 29,
+   "topic": "Detection",
+   "q": "What is a Sigma rule?",
+   "a": "A generic, vendor-neutral format for describing log detections that can be converted to SIEM queries.",
+   "source": "starter"
+  },
+  {
+   "week": 29,
+   "topic": "Detection",
+   "q": "MITRE ATT&CK: tactic vs technique?",
+   "a": "A tactic is the goal (for example Persistence). A technique is how the goal is achieved (for example Scheduled Task).",
+   "source": "starter"
+  },
+  {
+   "week": 29,
+   "topic": "Detection",
+   "q": "What is a false positive? A false negative?",
+   "a": "False positive: an alert with no real threat. False negative: a real threat that raised no alert.",
+   "source": "starter"
+  },
+  {
+   "week": 30,
+   "topic": "DFIR",
+   "q": "Why hash a disk image before analysis?",
+   "a": "To prove the evidence was not altered, by comparing hash values before and after.",
+   "source": "starter"
+  },
+  {
+   "week": 30,
+   "topic": "DFIR",
+   "q": "Static vs dynamic malware analysis?",
+   "a": "Static examines the file without running it. Dynamic runs it in an isolated sandbox and observes behavior.",
+   "source": "starter"
+  },
+  {
+   "week": 30,
+   "topic": "DFIR",
+   "q": "What is an IOC?",
+   "a": "Indicator of compromise: an artifact such as a hash, IP, domain or file path that signals an intrusion.",
+   "source": "starter"
+  },
+  {
+   "week": 30,
+   "topic": "DFIR",
+   "q": "Which framework analyzes memory dumps?",
+   "a": "Volatility.",
+   "source": "starter"
+  },
+  {
+   "week": 31,
+   "topic": "Cloud",
+   "q": "What is the principle behind IAM roles in AWS and Azure?",
+   "a": "Grant temporary, least-privilege permissions to identities instead of sharing long-lived credentials.",
+   "source": "starter"
+  },
+  {
+   "week": 31,
+   "topic": "Cloud",
+   "q": "What was Azure Active Directory renamed to?",
+   "a": "Microsoft Entra ID.",
+   "source": "starter"
+  },
+  {
+   "week": 31,
+   "topic": "Cloud",
+   "q": "Why is a public S3 bucket risky?",
+   "a": "Anyone on the internet may read (or write) its objects if the policy allows it, leaking data.",
+   "source": "starter"
+  },
+  {
+   "week": 32,
+   "topic": "Cloud",
+   "q": "Name a tool that audits AWS accounts for misconfigurations.",
+   "a": "Prowler (or ScoutSuite).",
+   "source": "starter"
+  },
+  {
+   "week": 32,
+   "topic": "Cloud",
+   "q": "Which AWS service records API activity for auditing?",
+   "a": "CloudTrail.",
+   "source": "starter"
+  },
+  {
+   "week": 32,
+   "topic": "Cloud",
+   "q": "What are CIS Benchmarks?",
+   "a": "Community consensus configuration baselines for hardening systems and cloud accounts.",
+   "source": "starter"
+  },
+  {
+   "week": 33,
+   "topic": "SC-900",
+   "q": "What does Conditional Access do?",
+   "a": "Applies access decisions based on signals such as user, device, location and risk before allowing sign-in.",
+   "source": "starter"
+  },
+  {
+   "week": 33,
+   "topic": "SC-900",
+   "q": "What is the Zero Trust principle 'assume breach'?",
+   "a": "Design controls as if an attacker is already inside: segment, limit access and monitor everything.",
+   "source": "starter"
+  },
+  {
+   "week": 33,
+   "topic": "SC-900",
+   "q": "What is Microsoft Defender used for?",
+   "a": "A family of products for threat protection across endpoints, identities, email and cloud.",
+   "source": "starter"
+  },
+  {
+   "week": 34,
+   "topic": "AI security",
+   "q": "What is prompt injection?",
+   "a": "Crafting input that makes an LLM ignore its instructions and follow the attacker's instructions instead.",
+   "source": "starter"
+  },
+  {
+   "week": 34,
+   "topic": "AI security",
+   "q": "Direct vs indirect prompt injection?",
+   "a": "Direct: the user types the malicious prompt. Indirect: it hides in content the model reads, such as a web page or document.",
+   "source": "starter"
+  },
+  {
+   "week": 34,
+   "topic": "AI security",
+   "q": "What does the OWASP Top 10 for LLM Applications list?",
+   "a": "The most critical risks in LLM apps, such as prompt injection, insecure output handling, training data poisoning and excessive agency.",
+   "source": "starter"
+  },
+  {
+   "week": 35,
+   "topic": "AI security",
+   "q": "What is excessive agency in an LLM agent?",
+   "a": "The model has more tools, permissions or autonomy than needed, so a bad output can cause real damage.",
+   "source": "starter"
+  },
+  {
+   "week": 35,
+   "topic": "AI security",
+   "q": "How can a RAG system be attacked?",
+   "a": "Poison the documents it retrieves so injected instructions or false facts reach the model.",
+   "source": "starter"
+  },
+  {
+   "week": 35,
+   "topic": "AI security",
+   "q": "Name two defenses for LLM applications.",
+   "a": "Validate and sanitize model output, give tools least privilege, add guardrails and human approval for risky actions.",
+   "source": "starter"
+  },
+  {
+   "week": 36,
+   "topic": "AI security",
+   "q": "What is the goal of LLM red teaming?",
+   "a": "Systematically probe a model or app for harmful, leaking or exploitable behavior before attackers do.",
+   "source": "starter"
+  },
+  {
+   "week": 37,
+   "topic": "PNPT prep",
+   "q": "What kinds of work does the PNPT practical exam cover?",
+   "a": "An external and internal network pentest with Active Directory, a written report and a live debrief.",
+   "source": "starter"
+  },
+  {
+   "week": 37,
+   "topic": "Reporting",
+   "q": "Why is the report as important as the hack?",
+   "a": "The client pays for clear findings, impact and fixes. Evidence you cannot explain has little value.",
+   "source": "starter"
+  },
+  {
+   "week": 38,
+   "topic": "Active Directory",
+   "q": "What does Responder exploit?",
+   "a": "LLMNR/NBT-NS name resolution fallback: it answers broadcast queries to capture hashes.",
+   "source": "starter"
+  },
+  {
+   "week": 38,
+   "topic": "Active Directory",
+   "q": "How does SMB signing help?",
+   "a": "It prevents relay attacks by requiring packets to be signed, so a relayed authentication fails.",
+   "source": "starter"
+  },
+  {
+   "week": 39,
+   "topic": "Reporting",
+   "q": "List the main sections of a pentest report.",
+   "a": "Executive summary, scope and methodology, findings with severity and evidence, remediation advice, appendices.",
+   "source": "starter"
+  },
+  {
+   "week": 39,
+   "topic": "Reporting",
+   "q": "Name the CVSS base metric groups.",
+   "a": "Attack vector, attack complexity, privileges required, user interaction, scope, and the confidentiality/integrity/availability impacts.",
+   "source": "starter"
+  },
+  {
+   "week": 40,
+   "topic": "Exam skills",
+   "q": "Why do a timed mock exam week?",
+   "a": "To practice time management, note taking and reporting under real pressure.",
+   "source": "starter"
+  },
+  {
+   "week": 41,
+   "topic": "Exam skills",
+   "q": "What evidence should you capture for every finding?",
+   "a": "Screenshots, commands and output, affected host and the steps to reproduce.",
+   "source": "starter"
+  },
+  {
+   "week": 42,
+   "topic": "Bug bounty",
+   "q": "VDP vs bug bounty program?",
+   "a": "A VDP accepts reports with no payment. A bug bounty pays rewards for valid findings.",
+   "source": "starter"
+  },
+  {
+   "week": 42,
+   "topic": "Bug bounty",
+   "q": "What must you read first before testing a bounty target?",
+   "a": "The program scope and rules: in-scope assets, banned techniques and safe harbor terms.",
+   "source": "starter"
+  },
+  {
+   "week": 42,
+   "topic": "Bug bounty",
+   "q": "Name a subdomain enumeration tool.",
+   "a": "subfinder, amass or assetfinder.",
+   "source": "starter"
+  },
+  {
+   "week": 43,
+   "topic": "Bug bounty",
+   "q": "What makes a bug report strong?",
+   "a": "Clear title, reproducible steps, proof of concept, realistic impact and a suggested fix.",
+   "source": "starter"
+  },
+  {
+   "week": 43,
+   "topic": "Bug bounty",
+   "q": "Which Burp Suite tool replays and edits a single request?",
+   "a": "Repeater.",
+   "source": "starter"
+  },
+  {
+   "week": 44,
+   "topic": "Capstone",
+   "q": "What does STRIDE stand for?",
+   "a": "Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege.",
+   "source": "starter"
+  },
+  {
+   "week": 44,
+   "topic": "Capstone",
+   "q": "Why build the lab in a host-only or isolated network?",
+   "a": "So attacks and malware cannot reach systems you do not own.",
+   "source": "starter"
+  },
+  {
+   "week": 45,
+   "topic": "Capstone",
+   "q": "What should you record during the attack phase?",
+   "a": "Each step, command, timestamp and evidence, so detections and the report can be built from it.",
+   "source": "starter"
+  },
+  {
+   "week": 46,
+   "topic": "Capstone",
+   "q": "What does a detection write-up map each attack to?",
+   "a": "A MITRE ATT&CK technique with the log evidence, the detection rule and a fix.",
+   "source": "starter"
+  },
+  {
+   "week": 47,
+   "topic": "Career",
+   "q": "How should a resume line be written?",
+   "a": "As a result, not a duty: for example 'Built a Wazuh lab and wrote 5 detections mapped to MITRE ATT&CK'.",
+   "source": "starter"
+  },
+  {
+   "week": 47,
+   "topic": "Career",
+   "q": "How many repositories should be pinned on GitHub?",
+   "a": "The top six, each with a clear README and screenshots.",
+   "source": "starter"
+  },
+  {
+   "week": 48,
+   "topic": "Interview",
+   "q": "Triage an alert aloud: what are the first steps?",
+   "a": "Confirm what fired and why, check the asset and user, gather related logs, decide true or false positive, escalate or contain.",
+   "source": "starter"
+  },
+  {
+   "week": 48,
+   "topic": "Interview",
+   "q": "How would you test a login form?",
+   "a": "Check authentication flaws: weak passwords, lockout, error messages, injection, session handling, MFA bypass, rate limiting and CSRF.",
+   "source": "starter"
+  },
+  {
+   "week": 49,
+   "topic": "Interview",
+   "q": "What does STAR stand for?",
+   "a": "Situation, Task, Action, Result.",
+   "source": "starter"
+  },
+  {
+   "week": 50,
+   "topic": "Career",
+   "q": "Which certifications does the roadmap suggest per role for 2028?",
+   "a": "Pentest: OSCP or CRTP. SOC: CySA+ or Blue Team Level 1. Cloud: CCSP.",
+   "source": "starter"
+  },
+  {
+   "week": 51,
+   "topic": "Career",
+   "q": "What is the point of a year-end retrospective?",
+   "a": "Record what worked and what to change, then plan the next year from evidence.",
+   "source": "starter"
+  }
+ ]
+}
