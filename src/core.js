@@ -623,8 +623,19 @@ function checkLevelAndPhases() {
   if (changed) setKv('phasesCelebrated', cel);
 }
 /* projects / certs write-through with their XP awards */
-function setProject(num, patch) {
-  const p = S.projects.find((x) => x.num === num); Object.assign(p, patch); save('projects', p);
+/* "Published" is locked: it only unlocks with the code given after the project is reviewed. */
+async function unlockProject(num, code) {
+  const p = S.projects.find((x) => x.num === num); if (!p || p.status === 'published') return false;
+  const bytes = new TextEncoder().encode(`cyber-project-v1:${num}:${String(code).trim().toUpperCase()}`);
+  const hex = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', bytes)), (b) => b.toString(16).padStart(2, '0')).join('');
+  if (hex !== (window.PROJECT_HASHES || {})[num]) return false;
+  setProject(num, { status: 'published' }, true); return true;
+}
+function setProject(num, patch, unlocked) {
+  const p = S.projects.find((x) => x.num === num);
+  if (p.status === 'published' && !unlocked) return;                       // verified projects are locked
+  if (patch.status === 'published' && !unlocked) return;                   // cannot publish without a code
+  Object.assign(p, patch); save('projects', p);
   if (p.status === 'published') award('project:' + num, { date: today(), kind: 'project', label: `Project ${num} published`, xp: CONFIG.xp.projectPublished }); else revoke('project:' + num);
   refresh([]);
 }

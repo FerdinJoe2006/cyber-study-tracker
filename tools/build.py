@@ -15,7 +15,7 @@ b64 = lambda p: base64.b64encode(Path(p).read_bytes()).decode()
 
 css = read(SRC / "style.css").replace("__GEISTMONO__", b64(VENDOR / "geist-mono.woff2")).replace("__GEIST__", b64(VENDOR / "geist.woff2"))
 seed = json.dumps(json.loads(read(ROOT / "data" / "seed.json")), ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
-app = "\n".join(read(SRC / f) for f in ["core.js", "ui_common.js", "ui_today.js", "ui_more.js", "ui_dash.js", "ui_app.js"])
+app = "\n".join(read(SRC / f) for f in ["verify.js", "core.js", "ui_common.js", "ui_today.js", "ui_more.js", "ui_dash.js", "ui_app.js"])
 app = app.replace("</script", "<\\/script")
 
 page = read(SRC / "template.html")

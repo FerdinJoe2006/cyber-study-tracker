@@ -174,7 +174,21 @@ function StakeTile() {
 }
 
 /* ========================= CERTS & PROJECTS ========================== */
-const CERT_STATUS = ['planned', 'booked', 'passed', 'failed'], PROJ_STATUS = [['not-started', 'Not started'], ['in-progress', 'In progress'], ['published', 'Published']];
+const CERT_STATUS = ['planned', 'booked', 'passed', 'failed'], PROJ_STATUS = [['not-started', 'Not started'], ['in-progress', 'In progress']];
+function ProjectTile({ p }) {
+  const [code, setCode] = useState(''), [busy, setBusy] = useState(false), locked = p.status === 'published';
+  const submit = async (e) => { e.preventDefault(); if (!code.trim()) return toast('Enter the code you were given.', 'error'); setBusy(true);
+    const ok = await unlockProject(p.num, code); setBusy(false);
+    if (ok) { setCode(''); toast(`Project ${p.num} verified. ${CONFIG.xp.projectPublished} XP.`, 'good'); } else toast('That code does not match this project.', 'error'); };
+  return html`<${Tile} title=${`Project ${p.num} · week ${p.week}`} action=${locked && html`<span className="chip good">Verified</span>`}>
+    <div className="col"><div><strong>${p.name}</strong><p className="small muted">${p.deliverable}</p></div>
+      <div className="fgrid">${locked ? html`<p className="small">Verified and locked.</p>`
+        : html`<label className="f">Status<select value=${p.status} onChange=${(e) => setProject(p.num, { status: e.target.value })}>${PROJ_STATUS.map(([k, v]) => html`<option key=${k} value=${k}>${v}</option>`)}</select></label>`}
+        ${locked ? null : html`<${DraftField} label="GitHub link" type="url" placeholder="https://github.com/..." value=${p.github} onSave=${(v) => setProject(p.num, { github: v })} />`}</div>
+      ${p.github && /^https?:\/\//.test(p.github) && html`<a className="small" href=${p.github} target="_blank" rel="noopener noreferrer">Open repository</a>`}
+      ${!locked && html`<form className="row wrap" onSubmit=${submit}><label className="f grow">Unlock code<input value=${code} placeholder="XXXX-XXXX-XXXX" autoCapitalize="characters" autoComplete="off" spellCheck="false" onInput=${(e) => setCode(e.target.value)} /></label><button className="btn" type="submit" disabled=${busy}>Verify</button></form>`}
+      ${!locked && html`<p className="xs muted">Finish the project, send it for review, and enter the code you get if it passes.</p>`}</div></${Tile}>`;
+}
 function CertsPage() {
   useApp();
   return html`<div className="page"><div className="page-head"><div><h1>Certs & Projects</h1><p className="muted">${S.certs.filter((c) => c.status === 'passed').length}/${S.certs.length} certifications passed · ${S.projects.filter((p) => p.status === 'published').length}/12 projects published</p></div></div>
@@ -185,11 +199,7 @@ function CertsPage() {
             <label className="f">Actual exam date<input type="date" value=${c.examDate} onChange=${(e) => setCert(c.id, { examDate: e.target.value })} /></label></div>
           <div className="fgrid"><${DraftField} label="Target date (optional override)" type="date" value=${c.targetDate} onSave=${(v) => setCert(c.id, { targetDate: v })} /><${DraftField} label="Cost paid" value=${c.cost} onSave=${(v) => setCert(c.id, { cost: v })} /><${DraftField} label="Score" value=${c.score} onSave=${(v) => setCert(c.id, { score: v })} /></div>
           <${DraftField} label="Notes" multiline value=${c.notes} onSave=${(v) => setCert(c.id, { notes: v })} /></div></${Tile}>`; })}</div>
-    <h2 style=${{ marginTop: 10 }}>Projects</h2><div className="grid2 even">${S.projects.map((p) => html`<${Tile} key=${p.num} title=${`Project ${p.num} · week ${p.week}`} action=${p.status === 'published' && html`<span className="chip good">Published</span>`}>
-      <div className="col"><div><strong>${p.name}</strong><p className="small muted">${p.deliverable}</p></div>
-        <div className="fgrid"><label className="f">Status<select value=${p.status} onChange=${(e) => setProject(p.num, { status: e.target.value })}>${PROJ_STATUS.map(([k, v]) => html`<option key=${k} value=${k}>${v}</option>`)}</select></label>
-          <${DraftField} label="GitHub link" type="url" placeholder="https://github.com/..." value=${p.github} onSave=${(v) => setProject(p.num, { github: v })} /></div>
-        ${p.github && /^https?:\/\//.test(p.github) && html`<a className="small" href=${p.github} target="_blank" rel="noopener noreferrer">Open repository</a>`}</div></${Tile}>`)}</div>
+    <h2 style=${{ marginTop: 10 }}>Projects</h2><div className="grid2 even">${S.projects.map((p) => html`<${ProjectTile} key=${p.num} p=${p} />`)}</div>
     <${Tile} title="Milestone checklist"><div>${S.milestones.map((m) => html`<label key=${m.id} className="check" style=${{ borderBottom: '1px solid var(--border)' }}><input type="checkbox" checked=${m.done} onChange=${() => toggleMilestone(m.id)} /><span className="grow">${m.milestone}</span><span className="chip">${m.targetDay ? (dateForDay(m.targetDay) ? fmtDate(dateForDay(m.targetDay)) : 'Day ' + m.targetDay) : m.target}</span></label>`)}</div></${Tile}></div>`;
 }
 
