@@ -144,7 +144,7 @@ function AllocTile() {
 
 /* ---------- today tile (solid amber, like the staking tile in the reference) ---------- */
 function TodayTile() {
-  useApp(); const tm = timerState(); useTick(!!(tm && tm.running));
+  useApp(); const tm = timerState(); useTick(!!(tm && tm.running)); const [ask, confirmNode] = useConfirm();
   const t = today(), p = planFor(t), r = rec(t), mins = minutesOn(t), target = (p ? CONFIG.plannedHours[hoursKey(p.type)] : CONFIG.plannedHours.study) * 60;
   const live = tm && tm.date === t ? tm : null, pre = t < S.settings.planStart;
   return html`<${Tile} accent=${true} className="b-today" title="Today" action=${p && html`<span className="chip" style=${{ background: 'color-mix(in oklch, var(--accent-ink) 12%, transparent)', color: 'var(--accent-ink)' }}>Day ${p.day}</span>`}>
@@ -154,7 +154,8 @@ function TodayTile() {
     <p className="num xs" style=${{ marginTop: 6, opacity: 0.75 }}>${fmtMin(mins)} of ${fmtMin(target)} target</p>
     <div style=${{ marginTop: 'auto', paddingTop: 18 }} className="col">
       <div className="row">${!tm ? html`<button className="btn dark grow" onClick=${timerStart}><${Icon} n="play" />Start</button>` : html`<button className="btn dark grow" onClick=${() => (tm.running ? timerPause() : timerResume())}><${Icon} n=${tm.running ? 'pause' : 'play'} />${tm.running ? 'Pause' : 'Resume'}</button><button className="btn dark grow" onClick=${() => timerStop(false)}><${Icon} n="stop" />Stop</button>`}</div>
-      ${p && html`<button className="btn dark" style=${{ opacity: r.status === 'done' ? 0.65 : 1 }} onClick=${() => completeDay(t)}><${Icon} n="check" />${r.status === 'done' ? 'Completed' : 'Mark complete'}</button>`}</div></${Tile}>`;
+      ${tm && html`<button className="btn dark" onClick=${() => ask('Discard this timer?', 'The running session will not be logged.', 'Discard', () => timerStop(true))}>Discard timer</button>`}
+      ${p && html`<button className="btn dark" style=${{ opacity: r.status === 'done' ? 0.65 : 1 }} onClick=${() => completeDay(t)}><${Icon} n="check" />${r.status === 'done' ? 'Completed' : 'Mark complete'}</button>`}</div>${confirmNode}</${Tile}>`;
 }
 
 /* ---------- weekly hours vs target ---------- */
