@@ -61,21 +61,22 @@ function ProgressTile() {
 
 /* ---------- start screen: shown until you press Start ---------- */
 function StartCard() {
-  const [d, setD] = useState(today()), first = S.plan[0];
+  const [d, setD] = useState(today()), [ask, confirmNode] = useConfirm();
   const later = d > today();
-  return html`<div className="page"><div className="page-head"><div><h1>Start your roadmap</h1><p className="muted">365 days of study, labs and projects. Begin whenever you are ready.</p></div></div>
-    <div className="grid2"><${Tile} title="Day 1">
+  return html`<div className="page"><div className="page-head"><div><h1>Start when you are ready</h1><p className="muted">Nothing has started yet. No days, streak or coins are counting until you begin.</p></div></div>
+    <div className="grid2"><${Tile} title="Begin your roadmap">
       <div className="col">
-        <p className="taskline">${first ? first.task : ''}</p>
+        <p className="taskline">${S.plan.length} days of study, labs and projects. You choose the day it begins.</p>
         <label className="f" style=${{ maxWidth: 240 }}>Start date<input type="date" value=${d} onChange=${(e) => setD(e.target.value || today())} /></label>
-        <button className="btn primary xl" style=${{ alignSelf: 'flex-start' }} onClick=${() => startPlan(d)}><${Icon} n="play" />${later ? 'Start on ' + fmtDate(d) : 'Start now'}</button>
-        <p className="small muted">The plan counts from this day. You can change it later in Settings.</p>
+        <button className="btn primary xl" style=${{ alignSelf: 'flex-start' }} onClick=${() => ask(later ? `Start on ${fmtLong(d)}?` : 'Start your roadmap today?', 'The plan counts from this date. From then on missed days can cost coins and break your streak. You can wipe everything and start over from Settings.', 'Yes, start', () => startPlan(d))}><${Icon} n="play" />${later ? 'Start on ' + fmtDate(d) : 'Start my roadmap'}</button>
+        <p className="small muted">You will be asked to confirm, so a stray tap cannot start it. You can change the date later in Settings.</p>
       </div></${Tile}>
       <${Tile} title="After you start"><div className="col">
-        <p className="small">Reminders run every day: study time, lab and review days, flash cards due, the daily check-in, exam countdowns and a weekly backup.</p>
+        <p className="small">Reminders run every day: study time, lab and review days, flash cards due, the daily check-in, exam countdowns and a weekly backup. Every task is verified before it pays points.</p>
         <p className="small muted">Allow notifications when your browser asks. Install the app (Settings > Install, or your browser's install button) so it opens like any other app. On Android and desktop Chrome or Edge the installed app can also remind you while it is closed. On iPhone, reminders appear when you open the app.</p>
-      </div></${Tile}></div></div>`;
+      </div></${Tile}></div>${confirmNode}</div>`;
 }
+
 function TodayPage() { useApp(); return isStarted() ? html`<${TodayMain} />` : html`<${StartCard} />`; }
 
 /* ---------- today ---------- */

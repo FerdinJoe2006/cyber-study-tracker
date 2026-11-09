@@ -916,7 +916,7 @@ function startPlan(date) {
   S.settings.notifications = ('Notification' in window) && Notification.permission === 'granted';
   setKv('settings', S.settings);
   registerBackgroundReminders();
-  toast(date > today() ? `Plan starts on ${fmtLong(date)}.` : 'Day 1 begins now. Good luck.', 'good');
+  toast(date > today() ? `Plan starts on ${fmtLong(date)}.` : 'Your roadmap has started. Good luck.', 'good');
   refresh([date]);
   if ('Notification' in window && Notification.permission === 'default') askNotifications();
 }
