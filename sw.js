@@ -1,6 +1,6 @@
 /* Service worker: cache-first, versioned cache.
    To ship an update, change CACHE_VERSION. Old caches are deleted on activate. */
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const CACHE = 'cyber-study-' + CACHE_VERSION;
 const ASSETS = ['./', './index.html', './manifest.json', './data/seed.json', './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png', './icons/apple-touch-icon.png'];
 
