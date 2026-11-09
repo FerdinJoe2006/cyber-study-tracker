@@ -23,6 +23,14 @@ const CONFIG = {
     streak7: 150,          // awarded at every 7th streak day
     streak30: 750,         // awarded at every 30th streak day
   },
+  // Verification window: nothing pays XP or coins until it is passed.
+  verify: {
+    minMinutes: { study: 30, lab: 60, review: 20 },  // time that must be logged on the day (by roadmap day type)
+    proofMin: { study: 40, lab: 80, review: 25 },    // characters of written proof of work
+    proofWords: 6,                                   // and at least this many words
+    quizQuestions: 3, quizPass: 2,                   // knowledge check: multiple choice from your flash cards
+    otherProofMin: 15, manualNoteMin: 10, checkinMin: 20,
+  },
   coinsPerXp: 0.1,                 // 1 coin per 10 XP (rounded down per award)
   manualMinutesCapPerDay: 180,     // manual time entry cap (anti-cheat)
   missedCoinPenalty: 20,           // coins lost for a missed day (never below zero)
@@ -158,7 +166,7 @@ const DB = {
 const S = {
   settings: { ...DEFAULT_SETTINGS }, kv: {}, plan: [], phases: [], days: {}, sessions: [], ledger: {},
   cards: [], reviews: [], quizSessions: [], checkins: {}, practice: [], projects: [], certs: [], milestones: [],
-  rewards: [], redemptions: [], stakes: {}, badges: {}, banners: [], toasts: [], celebrate: null,
+  rewards: [], redemptions: [], stakes: {}, badges: {}, banners: [], toasts: [], celebrate: null, verifyReq: null,
   derived: { streak: 0, longest: 0, shields: 0, events: [] }, ready: false, error: null,
 };
 const listeners = new Set();
@@ -294,10 +302,11 @@ function timerStop(discard = false) {
 function addManual(date, minutes, note) {
   minutes = Math.round(Number(minutes));
   if (!(minutes > 0)) return toast('Enter a number of minutes above zero.', 'error');
+  if ((note || '').trim().length < CONFIG.verify.manualNoteMin) return toast(`Say what you studied (at least ${CONFIG.verify.manualNoteMin} characters). Manual time is only counted with a description.`, 'error');
   const left = CONFIG.manualMinutesCapPerDay - manualOn(date);
   if (left <= 0) return toast(`Manual time is capped at ${CONFIG.manualMinutesCapPerDay / 60} hours per day. Use the timer for more.`, 'error');
   const add = Math.min(minutes, left);
-  const s = { id: uid(), date, startMs: parseYmd(date).getTime(), endMs: parseYmd(date).getTime(), minutes: add, kind: 'manual', note: note || '' };
+  const s = { id: uid(), date, startMs: parseYmd(date).getTime(), endMs: parseYmd(date).getTime(), minutes: add, kind: 'manual', note: note.trim() };
   S.sessions.push(s); save('sessions', s);
   toast(add < minutes ? `Added ${add} min (daily manual cap reached).` : `Added ${add} min.`, 'good');
   refresh([date]);
@@ -332,7 +341,7 @@ function levelInfo(xp = totals().xp) {
 /* base XP for finishing the task of a day */
 function baseXp(type) { return isLabLike(type) ? CONFIG.xp.labOrProject : (type === 'review' || type === 'rest') ? CONFIG.xp.review : CONFIG.xp.task; }
 /* anti-cheat: lab and project days need a logged session or a note before they pay XP */
-const hasEvidence = (date) => S.sessions.some((s) => s.date === date && s.kind === 'timer') || !!((rec(date).notes || '').trim() || (rec(date).learned || '').trim());
+const hasEvidence = (date) => !!rec(date).verify || S.sessions.some((s) => s.date === date && s.kind === 'timer') || !!((rec(date).notes || '').trim() || (rec(date).learned || '').trim());
 /* comeback: the most recent earlier task day was missed */
 function isComeback(date) {
   if (!S.settings.comeback || S.settings.loss === 'off') return false;
@@ -372,14 +381,94 @@ function setDayStatus(date, status, silent) {
   if (!silent) refresh([date]);
 }
 function patchDay(date, patch) { const r = { ...rec(date), date, ...patch }; S.days[date] = r; save('days', r); refresh([date]); }
+/* Completing a day always goes through the verification window (see ui_common.js, VerifyWindow).
+   Only undoing a completion skips it, because that removes points instead of adding them. */
 function completeDay(date) {
   const p = planFor(date); if (!p) return;
-  const done = rec(date).status === 'done';
-  setDayStatus(date, done ? 'todo' : 'done', true);
-  if (!done && isLabLike(p.type) && !hasEvidence(date)) toast('Marked done. Lab days pay XP once you log a timer session or add a note.', 'info');
-  if (!done) toast(`Day ${p.day} complete.`, 'good');
-  refresh([date]);
+  if (rec(date).status === 'done') {
+    const r = { ...rec(date), date, status: 'todo', verify: null }; S.days[date] = r; save('days', r);
+    toast(`Day ${p.day} reopened. Its points were removed.`); refresh([date]); return;
+  }
+  requestVerify(daySpec(date));
 }
+/* lowercase, no punctuation: used to spot the same proof pasted onto two days */
+const normText = (t) => String(t || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+/* '' when the proof is acceptable, otherwise the reason it is not */
+function proofProblem(text, { min, words = 0, unique = false, date } = {}) {
+  const t = String(text || '').trim(), n = t.split(/\s+/).filter(Boolean).length;
+  if (t.length < min) return `Write at least ${min} characters (${t.length} so far).`;
+  if (words && n < words) return `Use at least ${words} words so it says something specific (${n} so far).`;
+  if (/^(.)\1+$/.test(t.replace(/\s/g, ''))) return 'That looks like filler text.';
+  if (unique && Object.values(S.days).some((r) => r.date !== date && r.verify && normText(r.verify.proof) === normText(t))) return 'You already used this exact proof on another day. Describe what you did today.';
+  return '';
+}
+function daySpec(date) {
+  const p = planFor(date), V = CONFIG.verify, k = hoursKey(p.type), lab = isLabLike(p.type);
+  const xp = baseXp(p.type) * (isComeback(date) ? CONFIG.comebackMultiplier : 1);
+  return {
+    kind: 'day', title: `Verify Day ${p.day}`, sub: p.task, reward: `+${xp} XP · +${Math.floor(xp * CONFIG.coinsPerXp)} coins`,
+    minutes: { date, need: V.minMinutes[k] },
+    proof: { min: V.proofMin[k], words: V.proofWords, unique: true, date, label: lab ? 'Proof of work: what you built or solved, with tools and commands' : 'What did you do or learn? Be specific', placeholder: lab ? 'Example: Built the lab network, ran nmap -sV against the target and found the open ports, wrote them up in my notes.' : 'Example: Learned how a three-way handshake works and captured one in Wireshark.' },
+    link: lab ? { label: 'Link to your write-up, repo or screenshot (optional)' } : null,
+    quiz: { week: p.week, n: V.quizQuestions, pass: V.quizPass },
+    attest: 'I did this work myself and what I wrote is true.',
+    confirm: 'Verify and complete', onPass: (v) => verifyDay(date, v),
+  };
+}
+/* the only place a day becomes "done" with points: called when the verification window is passed */
+function verifyDay(date, v) {
+  const p = planFor(date); if (!p) return;
+  const r = { ...rec(date), date, status: 'done', verify: { ts: nowMs(), minutes: minutesOn(date), proof: v.proof, link: v.link || '', quiz: v.quiz || null } };
+  S.days[date] = r; save('days', r);
+  refresh([date]);
+  const e = S.ledger['task:' + date];
+  const extra = S.celebrate ? ` · ${S.celebrate.title}: ${S.celebrate.body}` : '';
+  S.celebrate = { title: `Day ${p.day} verified`, body: (e ? `+${e.xp} XP · +${e.coins} coins${e.meta && e.meta.comeback ? ' (comeback bonus)' : ''}` : 'Verified and complete.') + extra };
+  commit();
+}
+
+function rewardSpec(r) {
+  const coins = totals().coins, t = today(), due = !!planFor(t) && dayKind(t) === 'required', open = due && statusOf(t) !== 'done';
+  return { kind: 'reward', title: 'Redeem this reward', sub: r.name, facts: [['Cost', `${r.cost} coins`], ['Balance now', `${coins} coins`], ['Balance after', `${coins - r.cost} coins`], ["Today's task", open ? 'Not verified yet' : due ? 'Verified' : 'Nothing due', open]],
+    attest: 'I earned these coins with real work, and this reward is not a way to skip it.', confirm: 'Redeem', onPass: () => redeem(r.id) };
+}
+function certSpec(c) {
+  return { kind: 'cert', title: 'Verify your certification', sub: c.name, reward: `+${CONFIG.xp.certPassed} XP`, proof: { min: 6, label: 'Credential ID, score report number or validation code', placeholder: 'The ID printed on your score report or digital badge' },
+    link: { label: 'Verification or badge link (optional)' }, attest: 'I sat and passed this exam myself.', confirm: 'Verify and mark passed',
+    onPass: (v) => setCert(c.id, { status: 'passed', proof: v.proof, proofLink: v.link }, true) };
+}
+
+function resetSpec() {
+  const t = totals(), mins = S.sessions.reduce((a, x) => a + x.minutes, 0), done = Object.values(S.days).filter((d) => d.status === 'done').length;
+  return { kind: 'reset', danger: true, title: 'Start over from scratch', sub: 'This erases all progress on this device and cannot be undone, except from a backup file. Your theme, reminder times, reward shop and flash cards are kept (cards go back to box 1).',
+    facts: [['Days completed', String(done)], ['Time logged', fmtMin(mins)], ['XP / coins', `${t.xp} / ${t.coins}`], ['Badges', String(Object.keys(S.badges).length)], ['Plan start date', S.settings.planStart ? fmtDate(S.settings.planStart) : 'not started']],
+    type: 'RESET', backup: true, confirm: 'Erase and start over', onPass: (v) => resetEverything(v.backup) };
+}
+
+/* ---- verification window plumbing ---- */
+function requestVerify(spec) { S.verifyReq = { ...spec, id: uid() }; commit(); }
+function closeVerify() { S.verifyReq = null; commit(); }
+/* multiple-choice options for a flash card: the right answer plus three other cards' answers (same topic first) */
+function mcqOptions(card) {
+  const others = S.cards.filter((c) => c.id !== card.id && c.back && c.back.trim() !== card.back.trim());
+  const seen = new Set(), pick = [];
+  /* look-alike wrong answers: same topic and similar length rank first, with some randomness */
+  const rank = (c) => (c.topic === card.topic ? 0 : 40) + Math.abs(c.back.length - card.back.length) * 0.5 + Math.random() * 30;
+  for (const c of others.map((c) => [rank(c), c]).sort((a, b) => a[0] - b[0]).map((x) => x[1])) {
+    const k = c.back.trim().toLowerCase(); if (seen.has(k)) continue; seen.add(k); pick.push(c.back); if (pick.length === 3) break;
+  }
+  if (pick.length < 3) return null;
+  return shuffle([{ text: card.back, ok: true }, ...pick.map((text) => ({ text, ok: false }))]);
+}
+/* n questions for the day's week (this week's cards first, then earlier weeks) */
+function buildQuiz(week, n) {
+  const eligible = S.cards.filter((c) => c.week != null && c.week <= week);
+  const pool = [...shuffle(eligible.filter((c) => c.week === week)), ...shuffle(eligible.filter((c) => c.week !== week)), ...shuffle(S.cards.filter((c) => !eligible.includes(c)))];
+  const out = [];
+  for (const c of pool) { const opts = mcqOptions(c); if (opts) out.push({ id: c.id, q: c.front, topic: c.topic, opts }); if (out.length === n) break; }
+  return out;
+}
+
 function skipDay(date) { const s = rec(date).status === 'skipped'; setDayStatus(date, s ? 'todo' : 'skipped', true); refresh([date]); }
 /* swap the roadmap tasks of two calendar dates */
 function rescheduleDay(from, to) {
@@ -639,8 +728,10 @@ function setProject(num, patch, unlocked) {
   if (p.status === 'published') award('project:' + num, { date: today(), kind: 'project', label: `Project ${num} published`, xp: CONFIG.xp.projectPublished }); else revoke('project:' + num);
   refresh([]);
 }
-function setCert(id, patch) {
-  const c = S.certs.find((x) => x.id === id); const was = c.status; Object.assign(c, patch); save('certs', c);
+function setCert(id, patch, verified) {
+  const c = S.certs.find((x) => x.id === id); const was = c.status;
+  if (patch.status === 'passed' && was !== 'passed' && !verified) return toast('Passing an exam needs verification first.', 'error');
+  Object.assign(c, patch); save('certs', c);
   if (c.status === 'passed') {
     award('cert:' + id, { date: today(), kind: 'cert', label: `${c.name} passed`, xp: CONFIG.xp.certPassed });
     if (was !== 'passed') S.celebrate = { title: 'Certification passed', body: c.name };
@@ -675,14 +766,19 @@ function finishQuizSession(total, correct) {
   if (!total) return;
   const q = { id: uid(), ts: nowMs(), date: today(), total, correct }; S.quizSessions.push(q); save('quizSessions', q); commit();
 }
-function addPractice(o) {
+/* a score of 80%+ pays XP, so it needs the verification window (`v` = its proof); lower scores are just logged */
+function addPractice(o, v) {
   const p = { id: uid(), date: o.date || today(), exam: o.exam, score: Number(o.score), weak: o.weak || '', notes: o.notes || '' };
+  if (v) p.verify = { ts: nowMs(), proof: v.proof, link: v.link || '' };
   S.practice = [p, ...S.practice].sort((a, b) => (a.date < b.date ? 1 : -1)); save('practice', p);
-  if (p.score >= 80) award('practice:' + p.id, { date: p.date, kind: 'practice', label: `Practice exam ${p.score}%`, xp: CONFIG.xp.practiceExam80 });
+  if (p.score >= 80 && p.verify) award('practice:' + p.id, { date: p.date, kind: 'practice', label: `Practice exam ${p.score}%`, xp: CONFIG.xp.practiceExam80 });
   refresh([]);
 }
 function removePractice(id) { S.practice = S.practice.filter((p) => p.id !== id); remove('practice', id); revoke('practice:' + id); refresh([]); }
-function saveCheckin(date, o) { const c = { date, ...o, ts: nowMs() }; S.checkins[date] = c; save('checkins', c); toast('Check-in saved.', 'good'); refresh([date]); }
+function saveCheckin(date, o) {
+  if ((o.finished || '').trim().length < CONFIG.verify.checkinMin) return toast(`Describe what you finished (at least ${CONFIG.verify.checkinMin} characters).`, 'error');
+  if (!minutesOn(date) && rec(date).status !== 'done') return toast('Log some study time or verify the day first. Check-ins only pay XP for a day you actually worked.', 'error');
+  const c = { date, ...o, ts: nowMs() }; S.checkins[date] = c; save('checkins', c); toast('Check-in saved.', 'good'); refresh([date]); }
 
 /* ---------------------------------------------------------------------
    13. Rewards shop
@@ -830,6 +926,29 @@ async function registerBackgroundReminders() {
     const reg = await navigator.serviceWorker.ready;
     if ('periodicSync' in reg) await reg.periodicSync.register('daily-reminder', { minInterval: 6 * 3600 * 1000 });
   } catch (e) { /* not supported or not installed: in-app reminders still work */ }
+}
+
+const shuffle = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+/* START OVER: erases all progress (days, time, XP and coins, badges, quiz history, check-ins, practice tests,
+   redemptions, stakes, timer, streak, plan start) and puts projects, certs and milestones back to "not started".
+   Kept: your theme and reminder times, the reward shop, and every flash card (their boxes go back to box 1).
+   After this the "Start your roadmap" screen appears so you can pick a new start date. */
+async function resetEverything(backupFirst) {
+  try {
+    if (backupFirst) await exportAll();
+    for (const st of ['days', 'sessions', 'ledger', 'reviews', 'quizSessions', 'checkins', 'practice', 'redemptions', 'stakes', 'badges', 'projects', 'certs', 'milestones']) await DB.clear(st);
+    const seed = window.SEED, t = today();
+    await DB.putMany('projects', seed.projects); await DB.putMany('certs', seed.certs); await DB.putMany('milestones', seed.milestones);
+    const cards = S.cards.map((c) => ({ ...c, box: 1, due: t, reps: 0, lapses: 0, lastWrongDate: null }));
+    if (cards.length) await DB.putMany('cards', cards);
+    const keep = new Set(['plan', 'phases', 'seeded', 'persisted', 'lastBackup']);
+    for (const k of Object.keys(S.kv)) if (!keep.has(k) && k !== 'settings') await DB.del('kv', k);
+    const settings = { ...S.settings, planStart: '' };
+    await DB.put('kv', { k: 'settings', v: settings }); await DB.put('kv', { k: 'firstOpen', v: t }); await DB.put('kv', { k: 'lastLevel', v: 0 });
+    await loadAll(); S.banners = []; S.celebrate = null; S.verifyReq = null; applyTheme(); refresh([]);
+    goTab('today'); toast('Everything was reset. Pick a start date to begin again.', 'good');
+  } catch (e) { dbFail('reset your data')(e); }
 }
 
 const EXPORT_STORES = Object.keys(STORES);

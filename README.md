@@ -79,6 +79,28 @@ Levels (cumulative XP): Script Kiddie 0, Packet Sniffer 500, Port Scanner 1500, 
 
 **Anti-cheat:** manual time is capped at 3 hours per day; XP from minutes is capped at 180 per day; flash cards only pay XP when they are due.
 
+### Verification (nothing pays until it is checked)
+
+Every action that pays XP, coins or a reward opens a **verification window** first. The confirm button stays disabled until each step passes. Thresholds live in `CONFIG.verify`.
+
+| Action | What the window checks |
+| --- | --- |
+| Complete a day | Time logged that day (study 30 min, lab 60, review 20), written proof of work (40 / 80 / 25 characters, at least 6 words, not reused on another day), a 3-question multiple-choice check from your flash cards (2 right to pass, new questions on a retry) and an honesty tick |
+| Flash card | Multiple choice. XP only for an answer you actually pick correctly. Decks too small for four options fall back to self-grading |
+| Manual time | A description of what you studied is required |
+| Daily check-in | At least 20 characters, and time logged or the day verified |
+| Practice test of 80%+ | Proof of the attempt plus an honesty tick |
+| Certification passed | Credential ID plus an honesty tick |
+| Redeem a reward | Cost and balance preview, a reminder if today's task is not verified, honesty tick |
+| Set coins by hand | Type `ADJUST` and an honesty tick |
+| Project published | Unlock code (unchanged) |
+
+Reopening a completed day skips the window because it removes points rather than adding them. Days completed before this feature existed keep their points.
+
+### Start over
+
+Settings > Start over > Reset everything erases all progress (days, time, XP, coins, badges, quiz history, check-ins, practice, redemptions, timer, streak, plan start) after you type `RESET`; a backup download is offered first and is on by default. Your theme, reminder times, reward shop and flash cards are kept (card boxes go back to box 1). The Start screen then lets you choose any start date.
+
 ## Roadmap converter
 
 ```

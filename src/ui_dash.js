@@ -155,7 +155,7 @@ function TodayTile() {
     <div style=${{ marginTop: 'auto', paddingTop: 18 }} className="col">
       <div className="row">${!tm ? html`<button className="btn dark grow" onClick=${timerStart}><${Icon} n="play" />Start</button>` : html`<button className="btn dark grow" onClick=${() => (tm.running ? timerPause() : timerResume())}><${Icon} n=${tm.running ? 'pause' : 'play'} />${tm.running ? 'Pause' : 'Resume'}</button><button className="btn dark grow" onClick=${() => timerStop(false)}><${Icon} n="stop" />Stop</button>`}</div>
       ${tm && html`<button className="btn dark" onClick=${() => ask('Discard this timer?', 'The running session will not be logged.', 'Discard', () => timerStop(true))}>Discard timer</button>`}
-      ${p && html`<button className="btn dark" style=${{ opacity: r.status === 'done' ? 0.65 : 1 }} onClick=${() => completeDay(t)}><${Icon} n="check" />${r.status === 'done' ? 'Completed' : 'Mark complete'}</button>`}</div>${confirmNode}</${Tile}>`;
+      ${p && html`<button className="btn dark" style=${{ opacity: r.status === 'done' ? 0.65 : 1 }} onClick=${() => completeDay(t)}><${Icon} n="check" />${r.status === 'done' ? 'Verified' : 'Verify and complete'}</button>`}</div>${confirmNode}</${Tile}>`;
 }
 
 /* ---------- weekly hours vs target ---------- */
