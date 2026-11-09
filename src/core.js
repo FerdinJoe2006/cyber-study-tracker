@@ -288,13 +288,23 @@ function timerStart() {
 }
 function timerPause() { const t = timerState(); if (!t || !t.running) return; setKv('timer', { ...t, running: false, accMs: t.accMs + nowMs() - t.segStart }); commit(); }
 function timerResume() { const t = timerState(); if (!t || t.running) return; setKv('timer', { ...t, running: true, segStart: nowMs() }); commit(); }
+/* Stopping a timer opens the verification window: minutes only count (and pay 1 XP each) once you say what you worked on.
+   The clock is paused while the window is open; Cancel leaves the timer paused so nothing is lost. Discard never pays. */
 function timerStop(discard = false) {
   const t = timerState(); if (!t) return;
   const ms = timerMs(t);
-  setKv('timer', null);
-  if (discard || ms < 30000) { toast(discard ? 'Timer discarded.' : 'Session under 30 seconds, not logged.'); commit(); return; }
+  if (discard || ms < 30000) { setKv('timer', null); toast(discard ? 'Timer discarded.' : 'Session under 30 seconds, not logged.'); commit(); return; }
+  if (t.running) timerPause();
   const minutes = Math.max(1, Math.round(ms / 60000));
-  const s = { id: uid(), date: t.date, startMs: t.startedAt, endMs: nowMs(), minutes, kind: 'timer', startHour: t.startHour };
+  requestVerify({ kind: 'session', title: 'Log this study session', sub: `${fmtMin(minutes)} on ${fmtDate(t.date)}. Focused minutes pay ${CONFIG.xp.perMinute} XP each, up to ${CONFIG.xp.minuteCapPerDay} XP a day. The timer is paused until you finish or cancel.`,
+    proof: { min: CONFIG.verify.manualNoteMin, words: 2, label: 'What did you work on?', placeholder: 'Example: Wireshark capture of a TCP handshake' },
+    attest: 'The timer was running while I was actually studying.', confirm: 'Log session', onPass: (v) => finishTimer(v.proof) });
+}
+function finishTimer(note) {
+  const t = timerState(); if (!t) return;
+  const ms = timerMs(t), minutes = Math.max(1, Math.round(ms / 60000));
+  setKv('timer', null);
+  const s = { id: uid(), date: t.date, startMs: t.startedAt, endMs: nowMs(), minutes, kind: 'timer', startHour: t.startHour, note: (note || '').trim() };
   S.sessions.push(s); save('sessions', s);
   toast(`Logged ${fmtMin(minutes)}.`, 'good');
   refresh([t.date]);

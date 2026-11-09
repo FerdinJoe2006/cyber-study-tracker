@@ -87,6 +87,7 @@ Every action that pays XP, coins or a reward opens a **verification window** fir
 | --- | --- |
 | Complete a day | Time logged that day (study 30 min, lab 60, review 20), written proof of work (40 / 80 / 25 characters, at least 6 words, not reused on another day), a 3-question multiple-choice check from your flash cards (2 right to pass, new questions on a retry) and an honesty tick |
 | Flash card | Multiple choice. XP only for an answer you actually pick correctly. Decks too small for four options fall back to self-grading |
+| Stopping the timer | A description of what you worked on and an honesty tick. The clock pauses while the window is open. Discard never pays |
 | Manual time | A description of what you studied is required |
 | Daily check-in | At least 20 characters, and time logged or the day verified |
 | Practice test of 80%+ | Proof of the attempt plus an honesty tick |

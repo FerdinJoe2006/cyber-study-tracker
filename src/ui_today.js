@@ -128,7 +128,7 @@ function TodayMain() {
         </${Tile}>
 
         <${Tile} title="Time today" action=${html`<span className="num small">${fmtMin(minutesOn(t))} · ${Math.min(minutesOn(t), CONFIG.xp.minuteCapPerDay)} XP</span>`}>
-          ${sessions.length ? sessions.map((s) => html`<div key=${s.id} className="session"><span><span className="num">${fmtMin(s.minutes)}</span> <span className="muted small">${s.kind === 'timer' ? new Date(s.startMs).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' – ' + new Date(s.endMs).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : 'manual' + (s.note ? ': ' + s.note : '')}</span></span>
+          ${sessions.length ? sessions.map((s) => html`<div key=${s.id} className="session"><span><span className="num">${fmtMin(s.minutes)}</span> <span className="muted small">${s.kind === 'timer' ? new Date(s.startMs).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' – ' + new Date(s.endMs).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + (s.note ? ': ' + s.note : '') : 'manual' + (s.note ? ': ' + s.note : '')}</span></span>
             <button className="btn sm icon ghost" aria-label="Delete session" onClick=${() => ask('Delete this session?', 'Its minutes and XP will be removed.', 'Delete', () => deleteSession(s.id))}><${Icon} n="trash" /></button></div>`)
             : html`<${Empty}>No sessions yet. Press Start when you sit down to study.<//>`}
           <form className="row wrap" style=${{ marginTop: 12 }} onSubmit=${(e) => { e.preventDefault(); addManual(t, min, mnote); setMin(''); setMnote(''); }}>
