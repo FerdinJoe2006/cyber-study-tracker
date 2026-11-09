@@ -115,8 +115,8 @@ function TodayMain() {
             </div>
           </div>
           ${p && html`<div className="hr" style=${{ margin: '18px 0 6px' }}></div>
-            <label className="check"><input type="checkbox" checked=${r.status === 'done'} onChange=${() => completeDay(t)} /><span><strong>Mark complete</strong> <span className="kbd">C</span><span className="small muted" style=${{ display: 'block' }}>${isLabLike(p.type) ? `Lab and project days pay ${CONFIG.xp.labOrProject} XP once you log a timer session or add a note.` : `+${baseXp(p.type)} XP${isComeback(t) ? ` (x${CONFIG.comebackMultiplier} comeback bonus)` : ''}`}</span></span></label>
-            ${r.status === 'done' && isLabLike(p.type) && !hasEvidence(t) && html`<p className="chip lilac" style=${{ alignSelf: 'flex-start' }}>Add a note or a timer session to earn the XP</p>`}
+            <label className="check"><input type="checkbox" checked=${r.status === 'done'} onChange=${() => completeDay(t)} /><span><strong>${r.status === 'done' ? 'Verified and complete' : 'Verify and complete'}</strong> <span className="kbd">C</span><span className="small muted" style=${{ display: 'block' }}>${r.status === 'done' ? 'Untick to reopen the day. Its points are removed.' : `Opens a check: time logged, proof of work and a quick quiz. Pays ${baseXp(p.type)} XP${isComeback(t) ? ` x${CONFIG.comebackMultiplier} comeback bonus` : ''} once you pass.`}</span></span></label>
+            ${r.status === 'done' && !r.verify && isLabLike(p.type) && !hasEvidence(t) && html`<p className="chip lilac" style=${{ alignSelf: 'flex-start' }}>Add a note or a timer session to earn the XP</p>`}
             <div className="row wrap">
               <button className="btn sm" onClick=${() => skipDay(t)}><${Icon} n="skip" />${r.status === 'skipped' ? 'Undo skip' : 'Skip today'}</button>
               <button className="btn sm" onClick=${() => setResched(!resched)}><${Icon} n="swap" />Reschedule</button>
@@ -132,10 +132,10 @@ function TodayMain() {
             : html`<${Empty}>No sessions yet. Press Start when you sit down to study.<//>`}
           <form className="row wrap" style=${{ marginTop: 12 }} onSubmit=${(e) => { e.preventDefault(); addManual(t, min, mnote); setMin(''); setMnote(''); }}>
             <label className="f" style=${{ width: 110 }}>Minutes<input type="number" min="1" max="180" inputMode="numeric" value=${min} onInput=${(e) => setMin(e.target.value)} /></label>
-            <label className="f grow" style=${{ minWidth: 140 }}>Note (optional)<input type="text" value=${mnote} onInput=${(e) => setMnote(e.target.value)} /></label>
+            <label className="f grow" style=${{ minWidth: 140 }}>What did you study? (required)<input type="text" required minLength=${CONFIG.verify.manualNoteMin} value=${mnote} onInput=${(e) => setMnote(e.target.value)} /></label>
             <button className="btn" type="submit" style=${{ alignSelf: 'flex-end' }}><${Icon} n="plus" />Add time</button>
           </form>
-          <p className="xs muted" style=${{ marginTop: 8 }}>Manual time is capped at ${CONFIG.manualMinutesCapPerDay / 60} hours per day (${manualOn(t)} min used). XP is ${CONFIG.xp.perMinute} per minute, up to ${CONFIG.xp.minuteCapPerDay} a day.</p>
+          <p className="xs muted" style=${{ marginTop: 8 }}>Manual time needs a description of what you studied. It is capped at ${CONFIG.manualMinutesCapPerDay / 60} hours per day (${manualOn(t)} min used). XP is ${CONFIG.xp.perMinute} per minute, up to ${CONFIG.xp.minuteCapPerDay} a day.</p>
         </${Tile}>
         ${confirmNode}
       </div>
@@ -188,7 +188,7 @@ function DayPanel({ date, onClose }) {
         <p className="taskline">${p.task}</p><p className="small muted">${p.weekTitle}</p>`
         : html`<p className="muted">No roadmap task on this date.</p>`}
       <div className="row wrap">
-        ${p && html`<button className="btn sm" onClick=${() => completeDay(date)}><${Icon} n="check" />${r.status === 'done' ? 'Undo done' : 'Mark done'}</button>
+        ${p && html`<button className="btn sm" onClick=${() => completeDay(date)}><${Icon} n="check" />${r.status === 'done' ? 'Undo done' : 'Verify and complete'}</button>
           <button className="btn sm" onClick=${() => skipDay(date)}><${Icon} n="skip" />${r.status === 'skipped' ? 'Undo skip' : 'Skip'}</button>
           <button className="btn sm" onClick=${() => setResched(!resched)}><${Icon} n="swap" />Reschedule</button>`}
         ${p && html`<button className="btn sm" disabled=${date < today() && !isRestDay(date)} onClick=${() => toggleRestDay(date)}><${Icon} n="rest" />${isRestDay(date) ? 'Remove rest day' : 'Rest day'}</button>`}

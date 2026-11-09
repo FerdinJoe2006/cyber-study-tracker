@@ -6,7 +6,7 @@ function App() {
   /* desktop keyboard shortcuts: S start/stop timer, C complete today, N new note */
   useEffect(() => {
     const f = (e) => {
-      if (e.ctrlKey || e.metaKey || e.altKey || /input|textarea|select/i.test(e.target.tagName) || e.target.isContentEditable) return;
+      if (S.verifyReq || e.ctrlKey || e.metaKey || e.altKey || /input|textarea|select/i.test(e.target.tagName) || e.target.isContentEditable) return;
       const k = e.key.toLowerCase();
       if (k === 's') { e.preventDefault(); timerState() ? timerStop(false) : timerStart(); }
       else if (k === 'c') { if (planFor(today())) { e.preventDefault(); completeDay(today()); } }
@@ -22,7 +22,7 @@ function App() {
     <nav className="side" aria-label="Main"><div className="brand"><img src="icons/icon-192.png" alt="" />Cyber Study</div>${nav('side')}
       <div className="keys"><div><span className="kbd">S</span> start / stop</div><div><span className="kbd">C</span> complete</div><div><span className="kbd">N</span> new note</div></div></nav>
     <main id="main" tabIndex="-1" className="main" style=${{ outline: 'none' }}><${page} /></main>
-    <nav className="tabbar" aria-label="Main">${nav('bar')}</nav><${Toasts} /><${Celebration} /></div>`;
+    <nav className="tabbar" aria-label="Main">${nav('bar')}</nav><${Toasts} /><${VerifyHost} /><${Celebration} /></div>`;
 }
 ReactDOM.createRoot(document.getElementById('root')).render(html`<${App} />`);
 boot();

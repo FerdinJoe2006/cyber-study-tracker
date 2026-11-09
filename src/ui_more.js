@@ -11,7 +11,6 @@ function DraftField({ label, value, onSave, type, multiline, placeholder, min, m
     ? html`<textarea value=${v} placeholder=${placeholder} style=${{ minHeight: 64 }} onInput=${(e) => setV(e.target.value)} onBlur=${commit}></textarea>`
     : html`<input type=${type || 'text'} value=${v} min=${min} max=${max} placeholder=${placeholder} onInput=${(e) => setV(e.target.value)} onBlur=${commit} />`}</label>`;
 }
-const shuffle = (a) => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = (Math.random() * (i + 1)) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* =============================== QUIZ ================================ */
 function QuizPage() {
@@ -26,7 +25,9 @@ function StudyView() {
   const reduced = useReducedMotion();
   const [run, setRun] = useState(null);   // {queue, flipped, total, correct, retry:Set}
   const hist = S.quizSessions.slice(-8).reverse();
-  const start = () => { const ids = shuffle(dueCards()).slice(0, 30).map((c) => c.id); if (ids.length) setRun({ queue: ids, flipped: false, total: 0, correct: 0, retry: [] }); };
+  /* each card is a multiple-choice question (the right answer plus three other cards' answers), so XP is only paid for answers you really know. Decks too small for that fall back to self-grading. */
+  const withOpts = (r) => { const c = r.queue.length ? S.cards.find((x) => x.id === r.queue[0]) : null; return { ...r, picked: null, opts: c ? mcqOptions(c) : null }; };
+  const start = () => { const ids = shuffle(dueCards()).slice(0, 30).map((c) => c.id); if (ids.length) setRun(withOpts({ queue: ids, flipped: false, total: 0, correct: 0, retry: [] })); };
   const card = run && run.queue.length ? S.cards.find((c) => c.id === run.queue[0]) : null;
   const answer = (ok) => {
     const id = run.queue[0], first = !run.retry.includes(id);
@@ -34,18 +35,23 @@ function StudyView() {
     let queue = run.queue.slice(1), retry = run.retry;
     if (!ok) { queue = [...queue.slice(0, 3), id, ...queue.slice(3)]; retry = [...retry, id]; }   // wrong answers come back sooner
     const next = { queue, flipped: false, retry, total: run.total + (first ? 1 : 0), correct: run.correct + (first && ok ? 1 : 0) };
-    if (!queue.length) { finishQuizSession(next.total, next.correct); setRun({ ...next, done: true }); } else setRun(next);
+    if (!queue.length) { finishQuizSession(next.total, next.correct); setRun({ ...next, done: true }); } else setRun(withOpts(next));
   };
   useEffect(() => {
     if (!run || run.done) return;
-    const f = (e) => { if (/input|textarea|select/i.test(e.target.tagName)) return;
+    const f = (e) => { if (S.verifyReq || /input|textarea|select/i.test(e.target.tagName)) return;
+      if (run.opts) {
+        if (run.picked === null && /^[1-4]$/.test(e.key) && run.opts[Number(e.key) - 1]) setRun((r) => ({ ...r, picked: Number(e.key) - 1 }));
+        else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); if (run.picked === null) setRun((r) => ({ ...r, picked: -1 })); else answer(run.picked >= 0 && run.opts[run.picked].ok); }
+        return;
+      }
       if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); setRun((r) => ({ ...r, flipped: true })); }
       if (run.flipped && e.key === '1') answer(false); if (run.flipped && e.key === '2') answer(true); };
     addEventListener('keydown', f); return () => removeEventListener('keydown', f);
   });
   return html`<div className="grid2"><div className="col gap-16">
     ${!run && html`<${Tile} title="Self-test"><div className="col"><p className="taskline">${dueCards().length ? `${dueCards().length} card${dueCards().length > 1 ? 's are' : ' is'} ready.` : 'No cards due right now.'}</p>
-      <p className="small muted">Right answers move up a Leitner box and return later (1, 2, 4, 8, 16 days). Wrong answers drop to box 1 and come back in this session. Each correct card earns ${CONFIG.xp.quizCorrect} XP, plus ${CONFIG.xp.quizWrongBonus} if you missed it on an earlier day.</p>
+      <p className="small muted">Pick the right answer from four choices. Right answers move up a Leitner box and return later (1, 2, 4, 8, 16 days). Wrong answers drop to box 1 and come back in this session. Each correct card earns ${CONFIG.xp.quizCorrect} XP, plus ${CONFIG.xp.quizWrongBonus} if you missed it on an earlier day.</p>
       ${S.settings.introduceByWeek && html`<p className="xs muted">Cards unlock as their roadmap week arrives (turn this off in Settings).</p>`}
       <button className="btn primary xl" style=${{ alignSelf: 'flex-start' }} disabled=${!dueCards().length} onClick=${start}><${Icon} n="play" />Start session</button></div></${Tile}>`}
     ${run && run.done && html`<${Tile} title="Session complete"><div className="col"><div className="big">${run.correct}/${run.total}</div><p className="muted">${run.total ? Math.round((run.correct / run.total) * 100) : 0}% right on the first try. Cards you missed are scheduled for tomorrow.</p><button className="btn primary" onClick=${() => setRun(null)}>Done</button></div></${Tile}>`}
@@ -53,9 +59,13 @@ function StudyView() {
       <div className=${'flip' + (run.flipped ? ' on' : '') + (reduced ? ' nomo' : '')}><div className="flip-in">
         <div className="face front" aria-hidden=${run.flipped}><span className="xs muted">Question</span>${card.front}</div>
         <div className="face back" aria-hidden=${!run.flipped}><span className="xs muted">Answer</span>${card.back}</div></div></div>
-      <div className="row between wrap" style=${{ marginTop: 14 }}>
+      ${run.opts ? html`<div className="col gap-6" style=${{ marginTop: 14 }}>
+        ${run.opts.map((o, i) => html`<button type="button" key=${i} className=${'opt' + (run.picked !== null ? (o.ok ? ' right' : run.picked === i ? ' wrong' : '') : '')} disabled=${run.picked !== null} onClick=${() => setRun({ ...run, picked: i })}><span className="kbd">${i + 1}</span> ${o.text}</button>`)}
+        ${run.picked === null ? html`<button type="button" className="btn sm ghost" style=${{ alignSelf: 'flex-start' }} onClick=${() => setRun({ ...run, picked: -1 })}>I don't know <span className="kbd">Space</span></button>`
+          : html`<div className="row between wrap"><span className=${'chip ' + (run.picked >= 0 && run.opts[run.picked].ok ? 'good' : 'lilac')}>${run.picked >= 0 && run.opts[run.picked].ok ? 'Correct' : 'Not quite. The right answer is highlighted.'}</span><button type="button" className="btn primary xl" autoFocus onClick=${() => answer(run.picked >= 0 && run.opts[run.picked].ok)}>Next <span className="kbd">Space</span></button></div>`}</div>` : null}
+      ${!run.opts && html`<div className="row between wrap" style=${{ marginTop: 14 }}>
         ${!run.flipped ? html`<button className="btn primary xl grow" onClick=${() => setRun({ ...run, flipped: true })}>Show answer <span className="kbd">Space</span></button>`
-          : html`<button className="btn xl grow" onClick=${() => answer(false)}>Missed it <span className="kbd">1</span></button><button className="btn primary xl grow" onClick=${() => answer(true)}>Got it <span className="kbd">2</span></button>`}</div>
+          : html`<button className="btn xl grow" onClick=${() => answer(false)}>Missed it <span className="kbd">1</span></button><button className="btn primary xl grow" onClick=${() => answer(true)}>Got it <span className="kbd">2</span></button>`}</div>`}
       <div style=${{ marginTop: 12 }}><button className="btn sm ghost" onClick=${() => { if (run.total) finishQuizSession(run.total, run.correct); setRun(null); }}>End session</button></div></${Tile}>`}
   </div>
   <${Tile} title="Score history">${hist.length ? html`<div className="col"><div className="strip" style=${{ minHeight: 70, alignItems: 'flex-end' }}>${hist.slice().reverse().map((h) => html`<div key=${h.id} title=${`${h.correct}/${h.total}`} style=${{ flex: 1, height: Math.max(8, (h.correct / h.total) * 100) + '%', background: 'var(--accent2)', borderRadius: 4 }}></div>`)}</div>
@@ -116,13 +126,15 @@ function PracticeView() {
   const [f, setF] = useState({ exam: S.certs[0] ? S.certs[0].name : '', date: today(), score: '', weak: '', notes: '' }); const [ask, node] = useConfirm();
   const weak = {}; S.practice.forEach((p) => (p.weak || '').split(',').map((x) => x.trim().toLowerCase()).filter(Boolean).forEach((w) => (weak[w] = (weak[w] || 0) + 1)));
   const topWeak = Object.entries(weak).sort((a, b) => b[1] - a[1]).slice(0, 6);
-  return html`<div className="grid2"><${Tile} title="Log a practice test"><form className="col" onSubmit=${(e) => { e.preventDefault(); const s = Number(f.score); if (!(s >= 0 && s <= 100)) return toast('Enter a score between 0 and 100.', 'error'); addPractice(f); setF({ ...f, score: '', weak: '', notes: '' }); toast(s >= 80 ? `Logged. ${CONFIG.xp.practiceExam80} XP for 80%+.` : 'Practice test logged.', 'good'); }}>
+  return html`<div className="grid2"><${Tile} title="Log a practice test"><form className="col" onSubmit=${(e) => { e.preventDefault(); const s = Number(f.score); if (!(s >= 0 && s <= 100)) return toast('Enter a score between 0 and 100.', 'error'); const done = (v) => { addPractice(f, v); setF({ ...f, score: '', weak: '', notes: '' }); toast(s >= 80 ? `Verified and logged. ${CONFIG.xp.practiceExam80} XP for 80%+.` : 'Practice test logged.', 'good'); };
+      if (s >= 80) requestVerify({ kind: 'practice', title: 'Verify this practice score', sub: `${f.exam} · ${s}% on ${fmtDate(f.date)}`, reward: `+${CONFIG.xp.practiceExam80} XP`, proof: { min: CONFIG.verify.otherProofMin, label: 'Proof: where you took it and the attempt or report ID', placeholder: 'Example: Professor Messer practice exam 2, attempt on 12 Mar, 84/100.' }, link: { label: 'Link or screenshot reference (optional)' }, attest: 'This score is from my own attempt and I am reporting it honestly.', confirm: 'Verify and log', onPass: done });
+      else done(); }}>
       <div className="fgrid"><label className="f">Exam<select value=${f.exam} onChange=${(e) => setF({ ...f, exam: e.target.value })}>${S.certs.map((c) => html`<option key=${c.id}>${c.name}</option>`)}<option>Other</option></select></label>
         <label className="f">Date<input type="date" value=${f.date} onInput=${(e) => setF({ ...f, date: e.target.value })} /></label>
         <label className="f">Score (%)<input type="number" min="0" max="100" inputMode="decimal" value=${f.score} onInput=${(e) => setF({ ...f, score: e.target.value })} /></label></div>
       <label className="f">Weak topics (comma separated)<input type="text" value=${f.weak} placeholder="subnetting, PBQs, risk" onInput=${(e) => setF({ ...f, weak: e.target.value })} /></label>
       <label className="f">Notes<textarea style=${{ minHeight: 64 }} value=${f.notes} onInput=${(e) => setF({ ...f, notes: e.target.value })}></textarea></label>
-      <button className="btn primary" type="submit"><${Icon} n="plus" />Log test</button></form></${Tile}>
+      <button className="btn primary" type="submit"><${Icon} n="plus" />Log test</button><p className="xs muted">Scores of 80% or more pay ${CONFIG.xp.practiceExam80} XP and open a verification window first.</p></form></${Tile}>
     <div className="col gap-16"><${Tile} title="Weak topics">${topWeak.length ? html`<div className="row wrap">${topWeak.map(([w, n]) => html`<span key=${w} className="chip lilac">${w} · ${n}</span>`)}</div>` : html`<p className="small muted">Weak topics you log will be counted here.</p>`}</${Tile}>
       <${Tile} title="History">${S.practice.length ? html`<table className="t"><thead><tr><th>Date</th><th>Exam</th><th>Score</th><th></th></tr></thead><tbody>${S.practice.slice(0, 20).map((p) => html`<tr key=${p.id}><td>${fmtDate(p.date)}</td><td>${p.exam}<div className="xs muted">${p.weak}</div></td><td className="num">${p.score}%</td><td><button className="btn sm icon ghost" aria-label="Delete entry" onClick=${() => ask('Delete this entry?', `${p.exam}, ${p.score}%`, 'Delete', () => removePractice(p.id))}><${Icon} n="trash" /></button></td></tr>`)}</tbody></table>` : html`<${Empty}>No practice tests logged yet.<//>`}</${Tile}></div>${node}</div>`;
 }
@@ -145,7 +157,7 @@ function RewardsPage() {
     <div className="col gap-16"><${Tile} title="Reward shop" action=${html`<button className="btn sm" onClick=${() => setEdit({ name: '', cost: 50 })}><${Icon} n="plus" />New reward</button>`}>
         <div className="shop">${S.rewards.map((r) => html`<div key=${r.id} className="reward"><div><strong>${r.name}</strong><div className="num small muted">${r.cost} coins</div></div>
           <div className="bar"><i style=${{ width: Math.min(100, (coins / r.cost) * 100) + '%' }}></i></div>
-          <div className="row"><button className="btn primary sm grow" disabled=${coins < r.cost} onClick=${() => ask('Redeem this reward?', `${r.name} for ${r.cost} coins.`, 'Redeem', () => redeem(r.id))}>${coins >= r.cost ? 'Redeem' : (r.cost - coins) + ' to go'}</button>
+          <div className="row"><button className="btn primary sm grow" disabled=${coins < r.cost} onClick=${() => requestVerify(rewardSpec(r))}>${coins >= r.cost ? 'Redeem' : (r.cost - coins) + ' to go'}</button>
             <button className="btn sm icon ghost" aria-label=${'Edit ' + r.name} onClick=${() => setEdit(r)}><${Icon} n="edit" /></button><button className="btn sm icon ghost" aria-label=${'Delete ' + r.name} onClick=${() => ask('Delete this reward?', r.name, 'Delete', () => deleteReward(r.id))}><${Icon} n="trash" /></button></div></div>`)}</div>
         ${!S.rewards.length && html`<${Empty}>Add a real-life reward you would enjoy.<//>`}
         ${edit && html`<${RewardForm} r=${edit} done=${() => setEdit(null)} />`}</${Tile}>
@@ -195,7 +207,7 @@ function CertsPage() {
     <h2>Certifications</h2><div className="grid2 even">${S.certs.map((c) => { const d = certDate(c), left = d ? diffDays(d, today()) : null;
       return html`<${Tile} key=${c.id} title=${c.name} action=${c.status === 'passed' ? html`<span className="chip good">Passed</span>` : left !== null && html`<span className=${'chip ' + (left >= 0 && left <= 14 ? 'amber' : '')}>${left >= 0 ? left + ' days' : Math.abs(left) + ' days ago'}</span>`}>
         <div className="col"><p className="small muted">Roadmap target: day ${c.targetDay}${d ? ' (' + fmtDate(d) + ')' : ' (after you start)'} · ${c.targetLabel}</p>
-          <div className="fgrid"><label className="f">Status<select value=${c.status} onChange=${(e) => setCert(c.id, { status: e.target.value })}>${CERT_STATUS.map((s) => html`<option key=${s} value=${s}>${s}</option>`)}</select></label>
+          <div className="fgrid"><label className="f">Status<select value=${c.status} onChange=${(e) => (e.target.value === 'passed' && c.status !== 'passed' ? requestVerify(certSpec(c)) : setCert(c.id, { status: e.target.value }))}>${CERT_STATUS.map((s) => html`<option key=${s} value=${s}>${s}</option>`)}</select></label>
             <label className="f">Actual exam date<input type="date" value=${c.examDate} onChange=${(e) => setCert(c.id, { examDate: e.target.value })} /></label></div>
           <div className="fgrid"><${DraftField} label="Target date (optional override)" type="date" value=${c.targetDate} onSave=${(v) => setCert(c.id, { targetDate: v })} /><${DraftField} label="Cost paid" value=${c.cost} onSave=${(v) => setCert(c.id, { cost: v })} /><${DraftField} label="Score" value=${c.score} onSave=${(v) => setCert(c.id, { score: v })} /></div>
           <${DraftField} label="Notes" multiline value=${c.notes} onSave=${(v) => setCert(c.id, { notes: v })} /></div></${Tile}>`; })}</div>
@@ -230,7 +242,7 @@ function SettingsPage() {
         <label className="check"><input type="checkbox" checked=${s.stakesEnabled} disabled=${s.loss === 'off'} onChange=${(e) => set({ stakesEnabled: e.target.checked })} /><span>Allow accountability stakes (opt-in)</span></label>
         <div className="hr"></div>
         <div className="row wrap"><button className="btn sm" onClick=${() => ask('Reset the streak?', 'Your current streak goes to zero and starts again tomorrow. Your longest streak and XP stay.', 'Reset streak', resetStreak)}>Reset streak</button></div>
-        <form className="row wrap" onSubmit=${(e) => { e.preventDefault(); const n = Number(cv); if (n >= 0) ask('Set coins?', `Your coin balance becomes ${Math.round(n)}.`, 'Set coins', () => setCoins(n)); }}>
+        <form className="row wrap" onSubmit=${(e) => { e.preventDefault(); const n = Number(cv); if (n >= 0) requestVerify({ kind: 'coins', title: 'Adjust your coin balance', sub: 'Coins normally come only from verified work.', facts: [['Balance now', String(totals().coins)], ['New balance', String(Math.round(n))]], type: 'ADJUST', attest: 'This corrects a mistake. I am not using it to earn coins.', confirm: 'Set coins', onPass: () => setCoins(n) }); }}>
           <label className="f" style=${{ width: 140 }}>Coin balance<input type="number" min="0" value=${cv} onInput=${(e) => setCv(e.target.value)} /></label><button className="btn sm" type="submit" style=${{ alignSelf: 'flex-end' }}>Set coins</button></form></div></${Tile}>
       <${Tile} title="Backup and restore"><div className="col">
         <p className="small muted">Last backup: ${S.kv.lastBackup ? fmtLong(S.kv.lastBackup) : 'never'}. Storage protection: ${S.kv.persisted ? 'persistent (the browser will not clear it automatically)' : 'not guaranteed. Back up regularly.'}</p>
@@ -238,6 +250,9 @@ function SettingsPage() {
           <button className="btn" onClick=${() => fileRef.current.click()}><${Icon} n="upload" />Import backup</button><button className="btn" onClick=${exportCsv}><${Icon} n="download" />Time log (CSV)</button></div>
         <input ref=${fileRef} type="file" accept="application/json,.json" className="sr" onChange=${async (e) => { const f = e.target.files[0]; e.target.value = ''; if (f) { const txt = await f.text(); ask('Restore this backup?', 'This replaces ALL data on this device with the file.', 'Restore', () => importAll(txt)); } }} />
         <p className="small muted">Each device keeps its own data. To move between laptop and phone: export on one, send the file to yourself, then import on the other.</p></div></${Tile}>
+      <${Tile} title="Start over"><div className="col">
+        <p className="small muted">Started by accident, or want a clean slate? This erases your progress (days, time, XP, coins, badges, quiz history, check-ins) so you can begin again from any date. A verification window asks you to confirm and offers a backup first.</p>
+        <button className="btn danger" style=${{ alignSelf: 'flex-start' }} onClick=${() => requestVerify(resetSpec())}><${Icon} n="trash" />Reset everything</button></div></${Tile}>
       <${Tile} title="Install"><div className="col"><p className="small muted">${standalone ? 'You are running the installed app.' : 'Install it for a full-screen app that works offline. On iPhone use Share > Add to Home Screen.'}</p>
         ${installPrompt && html`<button className="btn primary" style=${{ alignSelf: 'flex-start' }} onClick=${async () => { installPrompt.prompt(); await installPrompt.userChoice; installPrompt = null; commit(); }}>Install app</button>`}
         <p className="xs muted">Keyboard shortcuts: <span className="kbd">S</span> start or stop the timer · <span className="kbd">C</span> mark today complete · <span className="kbd">N</span> new note</p></div></${Tile}>

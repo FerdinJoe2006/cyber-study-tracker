@@ -141,6 +141,64 @@ function Celebration() {
         <button className="btn primary" autoFocus onClick=${close}>Nice</button>
       </div></div><//>`;
 }
+/* ---------- verification window ----------
+   Every action that pays XP, coins or a reward opens this window first. It is driven by a spec object
+   (see daySpec in core.js): time logged, written proof, a flash-card knowledge check, a typed word,
+   an honesty statement. The confirm button stays disabled until every requested check passes. */
+function VerifyHost() { useApp(); const v = S.verifyReq; return v ? html`<${VerifyWindow} key=${v.id} spec=${v} />` : null; }
+function VerifyWindow({ spec }) {
+  useApp();
+  const [proof, setProof] = useState(''), [link, setLink] = useState(''), [att, setAtt] = useState(false), [typed, setTyped] = useState(''), [backup, setBackup] = useState(true);
+  const [qs, setQs] = useState(() => (spec.quiz ? buildQuiz(spec.quiz.week, spec.quiz.n) : [])), [ans, setAns] = useState({}), [score, setScore] = useState(null);
+  const tm = timerState(); useTick(!!(tm && tm.running));
+  useEffect(() => { const f = (e) => { if (e.key === 'Escape') closeVerify(); }; addEventListener('keydown', f); return () => removeEventListener('keydown', f); }, []);
+
+  const steps = [];
+  if (spec.minutes) {
+    const have = minutesOn(spec.minutes.date), need = spec.minutes.need, open = tm && tm.date === spec.minutes.date ? Math.floor(timerMs(tm) / 60000) : 0;
+    steps.push({ id: 'time', ok: have >= need, title: 'Time on task', node: html`<div className="col gap-6">
+      <div className="bar" aria-hidden="true"><i style=${{ width: Math.min(100, (have / need) * 100) + '%' }}></i></div>
+      <p className="small muted">${have >= need ? `${fmtMin(have)} logged. ${fmtMin(need)} is required.` : `${fmtMin(have)} logged of the ${fmtMin(need)} required. Use the timer or add time with a note, then come back.`}</p>
+      ${tm && tm.date === spec.minutes.date && html`<div className="row wrap"><span className="small">Your timer is open (${open} min). It only counts once you stop it.</span><button type="button" className="btn sm" onClick=${() => timerStop(false)}><${Icon} n="stop" />Stop and log</button></div>`}</div>` });
+  }
+  if (spec.proof) {
+    const problem = proofProblem(proof, spec.proof);
+    steps.push({ id: 'proof', ok: !problem, title: spec.proof.label, node: html`<div className="col gap-6">
+      <textarea aria-label=${spec.proof.label} value=${proof} placeholder=${spec.proof.placeholder || ''} style=${{ minHeight: 84 }} onInput=${(e) => setProof(e.target.value)}></textarea>
+      <p className=${'xs ' + (problem && proof ? '' : 'muted')} style=${problem && proof ? { color: 'var(--accent2)' } : null}>${problem || 'Looks good.'}</p>
+      ${spec.link && html`<label className="f">${spec.link.label}<input type="url" inputMode="url" placeholder="https://" value=${link} onInput=${(e) => setLink(e.target.value)} /></label>`}</div>` });
+  }
+  if (spec.quiz) {
+    const need = Math.min(spec.quiz.pass, qs.length), all = qs.length > 0 && qs.every((q) => ans[q.id] !== undefined), passed = score !== null && score >= need;
+    const check = () => setScore(qs.filter((q) => q.opts[ans[q.id]].ok).length);
+    const retry = () => { setQs(buildQuiz(spec.quiz.week, spec.quiz.n)); setAns({}); setScore(null); };
+    steps.push({ id: 'quiz', ok: qs.length === 0 || passed, title: 'Knowledge check', node: !qs.length
+      ? html`<p className="small muted">Your deck is too small to build a multiple-choice check, so this step is skipped. Add flash cards in Quiz > Deck to switch it on.</p>`
+      : html`<div className="col">
+        <p className="small muted">Get ${need} of ${qs.length} right. Questions come from your flash cards for this week and earlier.</p>
+        ${qs.map((q, qi) => html`<fieldset key=${q.id} className="vq" disabled=${score !== null}><legend className="small"><strong>${qi + 1}. ${q.q}</strong></legend>
+          ${q.opts.map((o, oi) => html`<button type="button" key=${oi} className="opt" aria-pressed=${ans[q.id] === oi} onClick=${() => setAns({ ...ans, [q.id]: oi })}>${o.text}</button>`)}</fieldset>`)}
+        ${score === null ? html`<button type="button" className="btn" disabled=${!all} onClick=${check}>Check answers</button>`
+          : passed ? html`<p className="chip good" style=${{ alignSelf: 'flex-start' }}>${score}/${qs.length} correct. Passed.</p>`
+          : html`<div className="row wrap"><span className="chip lilac">${score}/${qs.length} correct. You need ${need}.</span><button type="button" className="btn" onClick=${retry}>Try new questions</button></div>`}</div>` });
+  }
+  if (spec.type) steps.push({ id: 'type', ok: typed.trim().toUpperCase() === spec.type, title: `Type ${spec.type} to confirm`, node: html`<input type="text" aria-label=${'Type ' + spec.type} autoComplete="off" autoCapitalize="characters" spellCheck="false" value=${typed} onInput=${(e) => setTyped(e.target.value)} />` });
+  if (spec.attest) steps.push({ id: 'attest', ok: att, title: 'Your word', node: html`<label className="check"><input type="checkbox" checked=${att} onChange=${(e) => setAtt(e.target.checked)} /><span>${spec.attest}</span></label>` });
+
+  const ok = steps.every((x) => x.ok);
+  const go = () => { if (!ok) return; const quiz = qs.length && score !== null ? `${score}/${qs.length}` : null; closeVerify(); spec.onPass({ proof: proof.trim(), link: link.trim(), quiz, backup }); };
+  return html`<div className="scrim" role="dialog" aria-modal="true" aria-label=${spec.title} onClick=${closeVerify}>
+    <div className=${'modal wide col' + (spec.danger ? ' danger' : '')} onClick=${(e) => e.stopPropagation()}>
+      <div className="row between"><div><span className="chip lilac"><${Icon} n="shield" size=${14} />Verification</span><h2 style=${{ marginTop: 8 }}>${spec.title}</h2></div>${spec.reward && html`<span className="chip amber">${spec.reward}</span>`}</div>
+      ${spec.sub && html`<p className="muted small">${spec.sub}</p>`}
+      ${spec.facts && html`<div className="col gap-6">${spec.facts.map(([k, v, warn]) => html`<div key=${k} className="row between small"><span className="muted">${k}</span><strong className="num" style=${warn ? { color: 'var(--accent2)' } : null}>${v}</strong></div>`)}</div>`}
+      <ol className="vsteps">${steps.map((x) => html`<li key=${x.id} className=${'vrow' + (x.ok ? ' ok' : '')}><span className="vdot" aria-label=${x.ok ? 'Passed' : 'Not yet'}>${x.ok && html`<${Icon} n="check" size=${14} />`}</span><div className="grow col gap-6"><strong className="small">${x.title}</strong>${x.node}</div></li>`)}</ol>
+      ${spec.backup && html`<label className="check"><input type="checkbox" checked=${backup} onChange=${(e) => setBackup(e.target.checked)} /><span>Download a backup file first (recommended)</span></label>`}
+      <div className="row between"><button type="button" className="btn ghost" onClick=${closeVerify}>Cancel</button>
+        <button type="button" className=${'btn ' + (spec.danger ? 'danger' : 'primary')} disabled=${!ok} onClick=${go}>${spec.confirm || 'Verify'}</button></div>
+      ${!ok && html`<p className="xs muted" style=${{ textAlign: 'center' }}>Nothing is awarded until every step above is done.</p>`}
+    </div></div>`;
+}
 function Toasts() { return html`<div className="toasts" role="status" aria-live="polite">${S.toasts.map((t) => html`<div key=${t.id} className=${'toast ' + t.kind}>${t.msg}</div>`)}</div>`; }
 function Banners() {
   if (!S.banners.length) return null;
